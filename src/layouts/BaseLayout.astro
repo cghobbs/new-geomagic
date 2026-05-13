@@ -24,6 +24,8 @@ interface Props {
   ogImage?: string;
   breadcrumbs?: BreadcrumbItem[];
   faqItems?: FaqItem[];
+  /** Override default index,follow (e.g. noindex for thank-you) */
+  robots?: string;
   /** Skip default chrome (e.g. minimal thank-you page) */
   minimal?: boolean;
 }
@@ -36,6 +38,7 @@ const {
   ogImage = '/social-card.png',
   breadcrumbs,
   faqItems,
+  robots = 'index,follow',
   minimal = false,
 } = Astro.props;
 
@@ -44,6 +47,7 @@ const ogImageURL = new URL(ogImage, siteConfig.siteUrl).href;
 
 const businessId = `${siteConfig.siteUrl}/#business`;
 const personId = `${siteConfig.siteUrl}/#person`;
+const websiteId = `${siteConfig.siteUrl}/#website`;
 
 const themeClass =
   theme === 'velvet'
@@ -83,6 +87,18 @@ const localBusinessJson = {
   priceRange: '$$',
 };
 
+const websiteJson = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': websiteId,
+  url: siteConfig.siteUrl,
+  name: siteConfig.businessName,
+  ...(siteConfig.alternateNames.length ? { alternateName: siteConfig.alternateNames } : {}),
+  description: siteConfig.defaultDescription,
+  inLanguage: 'en-CA',
+  publisher: { '@id': businessId },
+};
+
 const sameAsLinks = [siteConfig.social.instagram, siteConfig.social.youtube].filter(Boolean);
 
 const personJson = {
@@ -91,7 +107,7 @@ const personJson = {
   '@id': personId,
   name: siteConfig.performerName,
   jobTitle: 'Close-up Magician',
-  url: siteConfig.siteUrl,
+  url: new URL('/about/', siteConfig.siteUrl).href,
   image: ogImageURL,
   worksFor: { '@id': businessId },
   knowsAbout: [
@@ -142,10 +158,13 @@ const faqJson =
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonicalURL} />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap-index.xml" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content="index,follow" />
+    <meta name="robots" content={robots} />
+    <meta name="geo.region" content="CA-BC" />
+    <meta name="geo.placename" content={siteConfig.address.addressLocality} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -183,8 +202,13 @@ const faqJson =
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
       />
     </noscript>
-    <script type="application/ld+json" set:html={JSON.stringify(localBusinessJson)} />
-    <script type="application/ld+json" set:html={JSON.stringify(personJson)} />
+    {!minimal && (
+      <>
+        <script type="application/ld+json" set:html={JSON.stringify(localBusinessJson)} />
+        <script type="application/ld+json" set:html={JSON.stringify(websiteJson)} />
+        <script type="application/ld+json" set:html={JSON.stringify(personJson)} />
+      </>
+    )}
     {breadcrumbJson && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJson)} />}
     {faqJson && <script type="application/ld+json" set:html={JSON.stringify(faqJson)} />}
   </head>

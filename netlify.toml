@@ -6,6 +6,16 @@
   NODE_VERSION = "22"
 
 [[headers]]
+  for = "/thank-you/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, follow"
+
+[[headers]]
+  for = "/thank-you"
+  [headers.values]
+    X-Robots-Tag = "noindex, follow"
+
+[[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
