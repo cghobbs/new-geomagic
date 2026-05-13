@@ -17,12 +17,12 @@ export const allFaqItems: FaqItem[] = [
   {
     question: 'What is close-up / strolling magic?',
     answer:
-      'Close-up magic is performed for small groups while guests mingle, often during cocktails or a reception. Effects use cards, coins, and borrowed objects, creating personal “did that just happen?” moments.',
+      'Close-up, strolling magic is an interactive experience where the magic happens right in the hands of your guests. As I move from group to group, I perform illusions with cards, coins, and everyday objects, creating personal moments of astonishment. It is a great way to break the ice, spark conversations, and leave a lasting impression.',
   },
   {
     question: 'Do you perform at corporate events?',
     answer:
-      'Yes. Galas, client appreciation nights, holiday parties, and networking receptions are a great fit. Magic is a premium icebreaker that keeps energy high without interrupting programming.',
+      'Yes. I tailor performances to your event and brand, from team-building workshops to awards ceremonies, with intimate close-up magic or higher-energy routines. Galas, client appreciation nights, holiday parties, and networking receptions are a strong fit, including fundraising galas where magic can support your program and keep guests engaged.',
   },
   {
     question: 'What do you wear?',

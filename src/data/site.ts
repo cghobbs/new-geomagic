@@ -3,9 +3,9 @@ export const siteConfig = {
   siteUrl: 'https://geomagic.ca',
   businessName: 'Magic by Geo',
   performerName: 'Geo',
-  tagline: 'Close-up magician for Vancouver, Surrey & the Lower Mainland',
+  tagline: 'Experience the art of astonishment, close-up magic for Vancouver, Surrey, and the Lower Mainland',
   defaultDescription:
-    'Hire Geo for elegant close-up magic at corporate events, weddings, and private parties across Greater Vancouver, including Surrey, Vancouver, Burnaby, Richmond, and beyond.',
+    'Hello, I\'m Geo, a close-up magician. Elevate your events with mind-bending illusions and unforgettable moments of wonder. Corporate events, private parties, and special celebrations across Greater Vancouver, Surrey, Vancouver, Burnaby, Richmond, and beyond.',
   email: 'hello@geomagic.ca',
   phone: '',
   address: {
