@@ -1,22 +1,21 @@
 ---
+import { Picture } from 'astro:assets';
+import photo3 from '../assets/photo-3.jpg';
+import photo5 from '../assets/photo-5.jpg';
+import photo1 from '../assets/photo-1.jpg';
+
 const images = [
   {
-    src: '/images/photo-3.jpg',
+    src: photo3,
     alt: 'A spectator holds her selected playing card in surprise during a close-up magic performance',
-    width: 1280,
-    height: 853,
   },
   {
-    src: '/images/photo-5.jpg',
+    src: photo5,
     alt: 'Geo and a guest share a high-five across the table after a moment of close-up magic',
-    width: 1280,
-    height: 853,
   },
   {
-    src: '/images/photo-1.jpg',
+    src: photo1,
     alt: 'Geo surprises a small group of guests at a fundraising event with close-up magic',
-    width: 1280,
-    height: 853,
   },
 ];
 
@@ -48,11 +47,12 @@ const headingFont =
       {
         images.map((img) => (
           <div class="overflow-hidden rounded-2xl border border-white/10 bg-black/40">
-            <img
+            <Picture
               src={img.src}
               alt={img.alt}
-              width={img.width}
-              height={img.height}
+              formats={['avif', 'webp']}
+              widths={[400, 600, 800, 1200]}
+              sizes="(min-width: 640px) 33vw, 100vw"
               loading="lazy"
               decoding="async"
               class="aspect-[4/3] w-full object-cover transition duration-500 hover:scale-[1.02]"

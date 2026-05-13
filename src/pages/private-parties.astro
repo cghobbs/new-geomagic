@@ -1,6 +1,8 @@
 ---
+import { Picture } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BookingForm from '../components/BookingForm.astro';
+import heroImg from '../assets/photo-6.jpg';
 import { siteConfig } from '../data/site';
 
 const title = 'Private Party Magician Vancouver & Surrey | Close-Up Magic | Geo';
@@ -30,11 +32,12 @@ const serviceJson = {
   <script type="application/ld+json" set:html={JSON.stringify(serviceJson)} />
   <div class="relative">
     <div class="aspect-[16/7] w-full overflow-hidden md:aspect-[16/6]">
-      <img
-        src="/images/photo-6.jpg"
+      <Picture
+        src={heroImg}
         alt="Geo reveals a chosen card and the spectators gasp in disbelief at a private celebration"
-        width={1280}
-        height={853}
+        formats={['avif', 'webp']}
+        widths={[640, 1024, 1280, 1600, 1920]}
+        sizes="100vw"
         loading="eager"
         fetchpriority="high"
         decoding="async"

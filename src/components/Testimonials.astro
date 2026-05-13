@@ -1,4 +1,6 @@
 ---
+import { siteConfig } from '../data/site';
+
 interface Props {
   theme?: 'velvet' | 'noir' | 'cinematic' | 'default';
 }
@@ -23,7 +25,32 @@ const guestQuotes = [
   'I came alone and it was nice having an excuse to join a group of people and watch a little show together',
   "He's such a classy magician, no crude or strange jokes, just quality magic and fun!",
 ];
+
+const reviewBody = `${lead} ${guestQuotes.map((q) => `"${q}"`).join(' ')}`;
+
+const reviewJson = {
+  '@context': 'https://schema.org',
+  '@type': 'Review',
+  itemReviewed: {
+    '@type': 'EntertainmentBusiness',
+    name: siteConfig.businessName,
+    url: siteConfig.siteUrl,
+  },
+  reviewRating: {
+    '@type': 'Rating',
+    ratingValue: '5',
+    bestRating: '5',
+    worstRating: '1',
+  },
+  author: {
+    '@type': 'Person',
+    name: 'Darian Kovacs',
+  },
+  reviewBody,
+};
 ---
+
+<script type="application/ld+json" set:html={JSON.stringify(reviewJson)} />
 
 <section class="py-16 md:py-24" aria-labelledby="testimonials-heading">
   <div class="mx-auto max-w-6xl px-4">

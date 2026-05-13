@@ -1,18 +1,21 @@
 ---
+import { Picture } from 'astro:assets';
+import heroImg from '../assets/photo-8.png';
 /** Cinematic, full-bleed hero with editorial overlay */
 ---
 
 <section class="relative min-h-[78vh] border-b border-white/10 md:min-h-[85vh]">
   <div class="absolute inset-0" aria-hidden="true">
-    <img
-      src="/images/photo-8.png"
+    <Picture
+      src={heroImg}
       alt=""
-      role="presentation"
-      class="h-full w-full object-cover"
-      width={1280}
-      height={899}
+      formats={['avif', 'webp']}
+      widths={[640, 1024, 1280, 1600, 1920]}
+      sizes="100vw"
       loading="eager"
       fetchpriority="high"
+      pictureAttributes={{ class: 'block h-full w-full' }}
+      class="h-full w-full object-cover"
     />
     <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/30 md:bg-gradient-to-r md:from-black md:via-black/55 md:to-transparent"></div>
   </div>
