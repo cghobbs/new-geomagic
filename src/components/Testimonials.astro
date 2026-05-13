@@ -31,11 +31,7 @@ const reviewBody = `${lead} ${guestQuotes.map((q) => `"${q}"`).join(' ')}`;
 const reviewJson = {
   '@context': 'https://schema.org',
   '@type': 'Review',
-  itemReviewed: {
-    '@type': 'EntertainmentBusiness',
-    name: siteConfig.businessName,
-    url: siteConfig.siteUrl,
-  },
+  itemReviewed: { '@id': `${siteConfig.siteUrl}/#business` },
   reviewRating: {
     '@type': 'Rating',
     ratingValue: '5',

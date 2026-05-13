@@ -42,6 +42,9 @@ const {
 const canonicalURL = new URL(pathname, siteConfig.siteUrl).href;
 const ogImageURL = new URL(ogImage, siteConfig.siteUrl).href;
 
+const businessId = `${siteConfig.siteUrl}/#business`;
+const personId = `${siteConfig.siteUrl}/#person`;
+
 const themeClass =
   theme === 'velvet'
     ? 'theme-velvet bg-[var(--color-velvet-bg)] text-[var(--color-velvet-text)] font-[family-name:var(--font-body-velvet)]'
@@ -54,6 +57,7 @@ const themeClass =
 const localBusinessJson = {
   '@context': 'https://schema.org',
   '@type': 'EntertainmentBusiness',
+  '@id': businessId,
   name: siteConfig.businessName,
   description: siteConfig.defaultDescription,
   url: siteConfig.siteUrl,
@@ -84,11 +88,12 @@ const sameAsLinks = [siteConfig.social.instagram, siteConfig.social.youtube].fil
 const personJson = {
   '@context': 'https://schema.org',
   '@type': 'Person',
+  '@id': personId,
   name: siteConfig.performerName,
   jobTitle: 'Close-up Magician',
   url: siteConfig.siteUrl,
   image: ogImageURL,
-  worksFor: { '@type': 'Organization', name: siteConfig.businessName },
+  worksFor: { '@id': businessId },
   knowsAbout: [
     'Close-up magic',
     'Sleight of hand',

@@ -18,11 +18,7 @@ const serviceJson = {
   '@type': 'Service',
   name: 'Corporate close-up magic',
   description,
-  provider: {
-    '@type': 'EntertainmentBusiness',
-    name: siteConfig.businessName,
-    url: siteConfig.siteUrl,
-  },
+  provider: { '@id': `${siteConfig.siteUrl}/#business` },
   areaServed: siteConfig.areaServed.map((name) => ({ '@type': 'City', name })),
   serviceType: 'Corporate entertainment',
 };
