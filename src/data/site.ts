@@ -1,11 +1,11 @@
-/** Central site / SEO / NAP data — edit before launch */
+/** Central site / SEO / NAP data. Edit before launch. */
 export const siteConfig = {
   siteUrl: 'https://geomagic.ca',
   businessName: 'Magic by Geo',
   performerName: 'Geo',
   tagline: 'Close-up magician for Vancouver, Surrey & the Lower Mainland',
   defaultDescription:
-    'Hire Geo for elegant close-up magic at corporate events, weddings, and private parties across Greater Vancouver — Surrey, Vancouver, Burnaby, Richmond & beyond.',
+    'Hire Geo for elegant close-up magic at corporate events, weddings, and private parties across Greater Vancouver, including Surrey, Vancouver, Burnaby, Richmond, and beyond.',
   email: 'hello@geomagic.ca',
   phone: '',
   address: {
@@ -27,7 +27,7 @@ export const siteConfig = {
     'White Rock',
   ],
   social: {
-    // Add when ready — used in Person sameAs
+    // Add when ready; used in Person sameAs
     instagram: '',
     youtube: '',
   },

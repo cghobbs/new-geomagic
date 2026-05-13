@@ -4,7 +4,7 @@ import FAQ from '../components/FAQ.astro';
 import BookingForm from '../components/BookingForm.astro';
 import { allFaqItems } from '../data/faq';
 
-const title = 'FAQ | Booking Geo — Vancouver & Surrey Close-Up Magician';
+const title = 'FAQ | Booking Geo | Vancouver & Surrey Close-Up Magician';
 const description =
   'Answers about close-up magic, travel across Greater Vancouver, timing, dress code, and how to book Geo for weddings, corporate events, and private parties.';
 const breadcrumbs = [
@@ -19,16 +19,16 @@ const faqForSchema = allFaqItems.map((f) => ({ question: f.question, answer: f.a
   title={title}
   description={description}
   pathname="/faq/"
-  theme="cinematic"
+  theme="default"
   breadcrumbs={breadcrumbs}
   faqItems={faqForSchema}
 >
   <article class="mx-auto max-w-3xl px-4 pb-4 pt-16 md:pt-20">
     <h1 class="text-4xl font-semibold tracking-tight text-white md:text-5xl">Frequently asked questions</h1>
     <p class="mt-4 text-lg text-white/75">
-      Quick answers about how close-up magic works — and what to expect when you book me across Vancouver, Surrey, and the Lower Mainland.
+      Quick answers about how close-up magic works, and what to expect when you book me across Vancouver, Surrey, and the Lower Mainland.
     </p>
   </article>
-  <FAQ theme="cinematic" items={allFaqItems} />
-  <BookingForm theme="cinematic" />
+  <FAQ theme="default" items={allFaqItems} />
+  <BookingForm theme="default" />
 </BaseLayout>
