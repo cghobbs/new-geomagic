@@ -1,0 +1,103 @@
+---
+interface Props {
+  theme?: 'velvet' | 'noir' | 'cinematic' | 'default';
+}
+
+const { theme = 'default' } = Astro.props;
+
+const linkClass =
+  theme === 'velvet'
+    ? 'text-[var(--color-velvet-text)]/80 hover:text-[var(--color-velvet-gold)]'
+    : theme === 'noir'
+      ? 'text-[var(--color-noir-text)]/80 hover:text-[var(--color-noir-accent-soft)]'
+      : theme === 'cinematic'
+        ? 'text-white/80 hover:text-white'
+        : 'text-zinc-300 hover:text-white';
+
+const ctaClass =
+  theme === 'velvet'
+    ? 'bg-[var(--color-velvet-gold)] text-[var(--color-velvet-bg)] hover:bg-[var(--color-velvet-gold-muted)]'
+    : theme === 'noir'
+      ? 'bg-[var(--color-noir-accent)] text-white hover:bg-[#b49ae8]'
+      : theme === 'cinematic'
+        ? 'bg-white text-black hover:bg-zinc-200'
+        : 'bg-amber-400 text-zinc-950 hover:bg-amber-300';
+
+const barBg =
+  theme === 'velvet'
+    ? 'bg-[var(--color-velvet-surface)]/90 border-[var(--color-velvet-gold)]/20'
+    : theme === 'noir'
+      ? 'bg-[var(--color-noir-surface)]/90 border-white/10'
+      : theme === 'cinematic'
+        ? 'bg-black/50 border-white/10'
+        : 'bg-zinc-900/90 border-white/10';
+
+const navId = 'primary-nav';
+---
+
+<header
+  class:list={[
+    'sticky top-0 z-50 border-b backdrop-blur-md',
+    barBg,
+  ]}
+>
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 md:py-4">
+    <a
+      href="/"
+      class:list={[
+        'text-lg font-semibold tracking-tight md:text-xl',
+        theme === 'velvet' && 'font-[family-name:var(--font-display-velvet)] text-[var(--color-velvet-gold)]',
+        theme === 'noir' && 'font-[family-name:var(--font-display-noir)] text-white',
+        theme === 'cinematic' && 'font-[family-name:var(--font-display-cinematic)] text-white tracking-wide',
+        theme === 'default' && 'font-[family-name:var(--font-display-noir)] text-white',
+      ]}
+    >
+      Magic by <span class="italic">Geo</span>
+    </a>
+
+    <!-- Mobile menu toggle (checkbox hack, no JS) -->
+    <input type="checkbox" id="nav-toggle" class="peer sr-only" aria-hidden="true" />
+    <label
+      for="nav-toggle"
+      class="inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-md border border-white/15 md:hidden"
+      aria-label="Open menu"
+    >
+      <span class="sr-only">Menu</span>
+      <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </label>
+
+    <nav
+      id={navId}
+      class:list={[
+        'absolute left-0 right-0 top-full hidden flex-col gap-1 border-b border-white/10 bg-black/95 px-4 py-4 peer-checked:flex md:static md:flex md:flex-row md:items-center md:gap-8 md:border-0 md:bg-transparent md:p-0',
+      ]}
+      aria-label="Primary"
+    >
+      <a class:list={['block py-3 text-base font-medium md:py-0', linkClass]} href="/weddings/">Weddings</a>
+      <a class:list={['block py-3 text-base font-medium md:py-0', linkClass]} href="/corporate-events/">Corporate</a>
+      <a class:list={['block py-3 text-base font-medium md:py-0', linkClass]} href="/private-parties/">Private</a>
+      <a class:list={['block py-3 text-base font-medium md:py-0', linkClass]} href="/about/">About</a>
+      <a class:list={['block py-3 text-base font-medium md:py-0', linkClass]} href="/faq/">FAQ</a>
+      <a
+        class:list={[
+          'mt-2 inline-flex min-h-11 items-center justify-center rounded-full px-5 text-sm font-semibold md:mt-0',
+          ctaClass,
+        ]}
+        href="/#book"
+      >
+        Check my date
+      </a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  /* Close mobile menu when a link is tapped: use :target trick not available; user scrolls. Optional: label for close */
+  @media (min-width: 768px) {
+    #nav-toggle {
+      display: none;
+    }
+  }
+</style>

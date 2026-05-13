@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BookingForm from '../components/BookingForm.astro';
+import { siteConfig } from '../data/site';
+
+const title = 'Corporate Magician Vancouver & Surrey | Close-Up Event Magic — Geo';
+const description =
+  'Corporate close-up magician for Vancouver & Surrey galas, client nights, holiday parties & networking receptions — polished strolling magic.';
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Corporate events', url: '/corporate-events/' },
+];
+
+const serviceJson = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Corporate close-up magic',
+  description,
+  provider: {
+    '@type': 'EntertainmentBusiness',
+    name: siteConfig.businessName,
+    url: siteConfig.siteUrl,
+  },
+  areaServed: siteConfig.areaServed.map((name) => ({ '@type': 'City', name })),
+  serviceType: 'Corporate entertainment',
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  pathname="/corporate-events/"
+  theme="cinematic"
+  breadcrumbs={breadcrumbs}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(serviceJson)} />
+  <div class="relative">
+    <div class="aspect-[16/7] w-full overflow-hidden md:aspect-[16/6]">
+      <img
+        src="/images/photo-2.jpg"
+        alt="Geo performing close-up magic at a corporate luncheon for a small group of professionals"
+        width={1280}
+        height={851}
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        class="h-full w-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent"></div>
+    </div>
+  </div>
+  <article class="mx-auto max-w-3xl px-4 py-16 md:py-20">
+    <p class="text-xs font-semibold uppercase tracking-[0.25em] text-amber-300/90">Corporate & brand events</p>
+    <h1 class="mt-3 text-4xl font-semibold tracking-tight text-white md:text-5xl">Corporate magician for Vancouver & Surrey events</h1>
+    <p class="mt-6 text-lg leading-relaxed text-white/75">
+      Hosting clients, celebrating a launch, or running an awards night? I provide <strong class="text-white">premium close-up magic</strong> that
+      sparks conversation without stopping the program — ideal for cocktail receptions, pre-dinner mingling, and networking floors.
+    </p>
+    <h2 class="mt-12 text-2xl font-semibold text-white">Built for professional rooms</h2>
+    <p class="mt-4 leading-relaxed text-white/75">
+      Material is clean, contemporary, and audience-aware — designed for mixed groups, executives, and guests who may not know each other yet. The
+      goal is simple: make your brand moment feel effortless and elevated.
+    </p>
+    <h2 class="mt-12 text-2xl font-semibold text-white">Corporate events across the Lower Mainland</h2>
+    <p class="mt-4 leading-relaxed text-white/75">
+      From downtown Vancouver hotels to Surrey convention-adjacent venues, Burnaby studios, Richmond conference centres, and North Shore retreats — I
+      travel throughout <strong class="text-white">Greater Vancouver</strong> with a self-contained, low-footprint performance style (no stage
+      required for close-up).
+    </p>
+    <h2 class="mt-12 text-2xl font-semibold text-white">Common corporate bookings</h2>
+    <ul class="mt-4 list-disc space-y-2 pl-5 text-white/75">
+      <li>Holiday parties & year-end celebrations</li>
+      <li>Client appreciation & VIP receptions</li>
+      <li>Conference cocktail blocks & sponsor lounges</li>
+      <li>Gala dinners (cocktail and pre-program mingling)</li>
+    </ul>
+    <p class="mt-10">
+      <a href="/#book" class="font-semibold text-amber-300 underline-offset-4 hover:underline">Request availability</a>
+      {' '}— include your run-of-show, guest count, and dress code.
+    </p>
+  </article>
+  <BookingForm theme="cinematic" />
+</BaseLayout>

@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BookingForm from '../components/BookingForm.astro';
+import { siteConfig } from '../data/site';
+
+const title = 'Private Party Magician Vancouver & Surrey | Close-Up Magic — Geo';
+const description =
+  'Private party close-up magician for birthdays, anniversaries & celebrations in Vancouver, Surrey, Burnaby, Richmond & Greater Vancouver.';
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Private parties', url: '/private-parties/' },
+];
+
+const serviceJson = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Private party close-up magic',
+  description,
+  provider: {
+    '@type': 'EntertainmentBusiness',
+    name: siteConfig.businessName,
+    url: siteConfig.siteUrl,
+  },
+  areaServed: siteConfig.areaServed.map((name) => ({ '@type': 'City', name })),
+  serviceType: 'Private event entertainment',
+};
+---
+
+<BaseLayout title={title} description={description} pathname="/private-parties/" theme="cinematic" breadcrumbs={breadcrumbs}>
+  <script type="application/ld+json" set:html={JSON.stringify(serviceJson)} />
+  <div class="relative">
+    <div class="aspect-[16/7] w-full overflow-hidden md:aspect-[16/6]">
+      <img
+        src="/images/photo-6.jpg"
+        alt="Geo reveals a chosen card and the spectators gasp in disbelief at a private celebration"
+        width={1280}
+        height={853}
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        class="h-full w-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent"></div>
+    </div>
+  </div>
+  <article class="mx-auto max-w-3xl px-4 py-16 md:py-20">
+    <p class="text-xs font-semibold uppercase tracking-[0.25em] text-amber-300/90">Private celebrations</p>
+    <h1 class="mt-3 text-4xl font-semibold tracking-tight text-white md:text-5xl">Private party magician — Vancouver to Surrey</h1>
+    <p class="mt-6 text-lg leading-relaxed text-white/75">
+      Milestone birthdays, anniversaries, engagement parties, and “just because” gatherings deserve something unforgettable. I perform
+      <strong class="text-white">interactive close-up magic</strong> in your home, rental, or private room — warm, surprising, and tailored to your
+      crowd.
+    </p>
+    <h2 class="mt-12 text-2xl font-semibold text-white">Magic that fits your night</h2>
+    <p class="mt-4 leading-relaxed text-white/75">
+      Whether you’re hosting 12 friends or 80+, strolling magic scales naturally: short bursts of astonishment that keep the party moving — no
+      spotlight hostage situations, no awkward volunteer moments (unless you want them).
+    </p>
+    <h2 class="mt-12 text-2xl font-semibold text-white">Serving Greater Vancouver hosts</h2>
+    <p class="mt-4 leading-relaxed text-white/75">
+      Based in <strong class="text-white">Surrey</strong>, I’m a short drive from Vancouver, Burnaby, Richmond, Tri-Cities, Langley, and the North
+      Shore. Tell me your neighbourhood in the form and I’ll confirm travel details.
+    </p>
+    <h2 class="mt-12 text-2xl font-semibold text-white">What hosts appreciate</h2>
+    <ul class="mt-4 list-disc space-y-2 pl-5 text-white/75">
+      <li>Flexible timing around catering and speeches</li>
+      <li>Material that works for mixed ages (when your guest list is diverse)</li>
+      <li>A polished, low-maintenance experience — you enjoy your party too</li>
+    </ul>
+    <p class="mt-10">
+      Ready to plan something special?{' '}
+      <a href="/#book" class="font-semibold text-amber-300 underline-offset-4 hover:underline">Send an inquiry</a>.
+    </p>
+  </article>
+  <BookingForm theme="cinematic" />
+</BaseLayout>

@@ -1,0 +1,108 @@
+---
+interface Props {
+  theme?: 'velvet' | 'noir' | 'cinematic' | 'default';
+  id?: string;
+}
+
+const { theme = 'default', id = 'book' } = Astro.props;
+
+const panel =
+  theme === 'velvet'
+    ? 'border-[var(--color-velvet-gold)]/25 bg-[var(--color-velvet-surface)]'
+    : theme === 'noir'
+      ? 'border-white/10 bg-[var(--color-noir-surface)]'
+      : theme === 'cinematic'
+        ? 'border-white/10 bg-[var(--color-cin-surface)]'
+        : 'border-white/10 bg-zinc-900';
+
+const label = theme === 'velvet' ? 'text-[var(--color-velvet-text)]/90' : 'text-zinc-200';
+
+const input =
+  'mt-1 w-full rounded-lg border border-white/15 bg-black/40 px-3 py-2.5 text-base text-white placeholder:text-white/40 focus:border-amber-300/80 focus:outline-none focus:ring-2 focus:ring-amber-300/40';
+
+const btn =
+  theme === 'velvet'
+    ? 'bg-[var(--color-velvet-gold)] text-[var(--color-velvet-bg)] hover:bg-[var(--color-velvet-gold-muted)]'
+    : theme === 'noir'
+      ? 'bg-[var(--color-noir-accent)] text-white hover:bg-[#b49ae8]'
+      : theme === 'cinematic'
+        ? 'bg-white text-black hover:bg-zinc-200'
+        : 'bg-amber-400 text-zinc-950 hover:bg-amber-300';
+---
+
+<section {id} class="scroll-mt-24 py-16 md:py-24" aria-labelledby="book-heading">
+  <div class="mx-auto max-w-2xl px-4">
+    <h2 id="book-heading" class="text-center text-3xl font-semibold tracking-tight md:text-4xl">
+      Contact me to book your next event
+    </h2>
+    <p class="mx-auto mt-3 max-w-xl text-center text-base text-white/65">
+      Share a few details — event type, date, and guest count — and I’ll reply with availability for Greater Vancouver.
+    </p>
+
+    <div class:list={['mt-10 rounded-2xl border p-6 md:p-8', panel]}>
+      <form
+        name="booking"
+        method="POST"
+        action="/thank-you/"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        class="space-y-5"
+      >
+        <input type="hidden" name="form-name" value="booking" />
+        <p class="hidden">
+          <label>
+            Don’t fill this out: <input name="bot-field" />
+          </label>
+        </p>
+
+        <div>
+          <label for="full-name" class:list={['block text-sm font-medium', label]}>Full name</label>
+          <input class={input} type="text" id="full-name" name="full-name" required autocomplete="name" />
+        </div>
+        <div>
+          <label for="email" class:list={['block text-sm font-medium', label]}>Email</label>
+          <input class={input} type="email" id="email" name="email" required autocomplete="email" />
+        </div>
+        <div>
+          <label for="phone" class:list={['block text-sm font-medium', label]}>Phone <span class="text-white/50">(optional)</span></label>
+          <input class={input} type="tel" id="phone" name="phone" autocomplete="tel" />
+        </div>
+        <div>
+          <label for="event-type" class:list={['block text-sm font-medium', label]}>Event type</label>
+          <select class={input} id="event-type" name="event-type" required>
+            <option value="">Select…</option>
+            <option>Wedding</option>
+            <option>Corporate</option>
+            <option>Private party</option>
+            <option>Fundraiser / gala</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="grid gap-5 sm:grid-cols-2">
+          <div>
+            <label for="event-date" class:list={['block text-sm font-medium', label]}>Event date</label>
+            <input class={input} type="date" id="event-date" name="event-date" />
+          </div>
+          <div>
+            <label for="guest-count" class:list={['block text-sm font-medium', label]}>Guest count (approx.)</label>
+            <input class={input} type="text" id="guest-count" name="guest-count" inputmode="numeric" placeholder="e.g. 80" />
+          </div>
+        </div>
+        <div>
+          <label for="venue" class:list={['block text-sm font-medium', label]}>Venue / city</label>
+          <input class={input} type="text" id="venue" name="venue" placeholder="e.g. Downtown Vancouver hotel" />
+        </div>
+        <div>
+          <label for="message" class:list={['block text-sm font-medium', label]}>How can I help?</label>
+          <textarea class:list={[input, 'min-h-32']} id="message" name="message" rows="5" required></textarea>
+        </div>
+        <button
+          type="submit"
+          class:list={['w-full rounded-full px-6 py-3 text-base font-semibold transition', btn]}
+        >
+          Submit inquiry
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

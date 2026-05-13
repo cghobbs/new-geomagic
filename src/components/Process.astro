@@ -1,0 +1,53 @@
+---
+interface Props {
+  theme?: 'velvet' | 'noir' | 'cinematic' | 'default';
+}
+
+const { theme = 'default' } = Astro.props;
+
+const headingFont =
+  theme === 'velvet'
+    ? 'font-[family-name:var(--font-display-velvet)] text-[var(--color-velvet-gold)]'
+    : theme === 'noir'
+      ? 'font-[family-name:var(--font-display-noir)]'
+      : theme === 'cinematic'
+        ? 'font-[family-name:var(--font-display-cinematic)]'
+        : 'font-[family-name:var(--font-display-noir)]';
+
+const steps = [
+  {
+    n: '01',
+    title: 'Tell me about your event',
+    body: 'Date, city, guest count, and the vibe you want — corporate polish, wedding warmth, or party energy.',
+  },
+  {
+    n: '02',
+    title: 'Tailored performance plan',
+    body: 'I’ll suggest the right format — typically strolling close-up during cocktails or a focused reception window.',
+  },
+  {
+    n: '03',
+    title: 'You host; I astonish',
+    body: 'I arrive prepared, dress to your dress code, and keep the magic elegant, conversational, and unforgettable.',
+  },
+];
+---
+
+<section class="border-y border-white/10 bg-black/25 py-16 md:py-24" aria-labelledby="process-heading">
+  <div class="mx-auto max-w-6xl px-4">
+    <h2 id="process-heading" class:list={['text-center text-3xl md:text-4xl text-white', headingFont]}>
+      How booking works
+    </h2>
+    <ol class="mt-12 grid gap-8 md:grid-cols-3">
+      {
+        steps.map((s) => (
+          <li class="relative rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-amber-300/80">{s.n}</span>
+            <h3 class="mt-2 text-lg font-semibold text-white">{s.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-white/70">{s.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

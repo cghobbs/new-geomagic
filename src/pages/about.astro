@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BookingForm from '../components/BookingForm.astro';
+
+const title = 'About Geo | Close-Up Magician — Surrey & Vancouver';
+const description =
+  'Meet Geo — a Surrey-based close-up magician performing elegant strolling magic for weddings, corporate events, and private parties across Greater Vancouver.';
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'About', url: '/about/' },
+];
+---
+
+<BaseLayout title={title} description={description} pathname="/about/" theme="cinematic" breadcrumbs={breadcrumbs}>
+  <article class="mx-auto max-w-3xl px-4 py-16 md:py-20">
+    <h1 class="text-4xl font-semibold tracking-tight text-white md:text-5xl">About Geo</h1>
+    <p class="mt-6 text-lg leading-relaxed text-white/75">
+      I’m <strong class="text-white">Geo</strong> — a close-up magician based in <strong class="text-white">Surrey, BC</strong>, serving
+      <strong class="text-white">Greater Vancouver</strong>. My work is simple to describe and impossible to forget: illusions that happen in your
+      guests’ hands, at eye level, in the flow of a real evening.
+    </p>
+    <h2 class="mt-12 text-2xl font-semibold text-white">The experience I bring</h2>
+    <p class="mt-4 leading-relaxed text-white/75">
+      Close-up magic is intimate by design. I move from group to group during cocktails or mingling — cards, coins, borrowed objects — creating
+      personal moments of astonishment that break the ice and spark conversation. It’s the kind of entertainment that feels
+      <em>effortless</em> when it’s done well: polished, warm, and never “loud for the sake of loud.”
+    </p>
+    <h2 class="mt-12 text-2xl font-semibold text-white">Who I perform for</h2>
+    <p class="mt-4 leading-relaxed text-white/75">
+      I love working with hosts who care about details: <strong class="text-white">weddings</strong> where you want the cocktail hour to feel alive,
+      <strong class="text-white">corporate events</strong> where you want networking to feel natural, and <strong class="text-white">private parties</strong> where you want your friends to experience something they’ll talk about for years.
+    </p>
+    <p class="mt-10">
+      Want to see if we’re a fit?{' '}
+      <a href="/#book" class="font-semibold text-amber-300 underline-offset-4 hover:underline">Tell me about your event</a>.
+    </p>
+  </article>
+  <BookingForm theme="cinematic" />
+</BaseLayout>

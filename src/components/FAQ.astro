@@ -1,0 +1,47 @@
+---
+import type { FaqItem } from '../data/faq';
+import { homeFaqPreview } from '../data/faq';
+
+interface Props {
+  theme?: 'velvet' | 'noir' | 'cinematic' | 'default';
+  /** If omitted, uses first 3 FAQ entries from `src/data/faq.ts` */
+  items?: FaqItem[];
+  id?: string;
+}
+
+const { theme = 'default', items = homeFaqPreview, id } = Astro.props;
+
+const headingFont =
+  theme === 'velvet'
+    ? 'font-[family-name:var(--font-display-velvet)] text-[var(--color-velvet-gold)]'
+    : theme === 'noir'
+      ? 'font-[family-name:var(--font-display-noir)] text-white'
+      : theme === 'cinematic'
+        ? 'font-[family-name:var(--font-display-cinematic)] text-white'
+        : 'font-[family-name:var(--font-display-noir)] text-white';
+---
+
+<section class="py-16 md:py-24" aria-labelledby="faq-heading" id={id}>
+  <div class="mx-auto max-w-3xl px-4">
+    <h2 id="faq-heading" class:list={['text-center text-3xl md:text-4xl', headingFont]}>
+      Frequently asked questions
+    </h2>
+    <div class="mt-10 space-y-4">
+      {
+        items.map((item) => (
+          <details class="group rounded-2xl border border-white/10 bg-white/[0.03] p-5 open:bg-white/[0.06]">
+            <summary class="cursor-pointer list-none text-base font-semibold text-white marker:content-none [&::-webkit-details-marker]:hidden">
+              <span class="flex items-center justify-between gap-3">
+                {item.question}
+                <span class="text-amber-300/90 transition group-open:rotate-45" aria-hidden="true">
+                  +
+                </span>
+              </span>
+            </summary>
+            <p class="mt-3 text-sm leading-relaxed text-white/75">{item.answer}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>

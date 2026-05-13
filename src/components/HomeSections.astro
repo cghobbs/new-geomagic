@@ -1,0 +1,21 @@
+---
+import ServicesGrid from './ServicesGrid.astro';
+import Process from './Process.astro';
+import Testimonials from './Testimonials.astro';
+import Gallery from './Gallery.astro';
+import FAQ from './FAQ.astro';
+import BookingForm from './BookingForm.astro';
+
+interface Props {
+  theme: 'velvet' | 'noir' | 'cinematic';
+}
+
+const { theme } = Astro.props;
+---
+
+<ServicesGrid theme={theme} />
+<Process theme={theme} />
+<Testimonials theme={theme} />
+<Gallery theme={theme} />
+<FAQ theme={theme} />
+<BookingForm theme={theme} />

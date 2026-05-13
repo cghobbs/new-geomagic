@@ -1,0 +1,58 @@
+---
+import { siteConfig } from '../data/site';
+
+interface Props {
+  theme?: 'velvet' | 'noir' | 'cinematic' | 'default';
+}
+
+const { theme = 'default' } = Astro.props;
+
+const border =
+  theme === 'velvet'
+    ? 'border-[var(--color-velvet-gold)]/15'
+    : 'border-white/10';
+
+const muted =
+  theme === 'velvet' ? 'text-[var(--color-velvet-text)]/60' : 'text-white/60';
+
+const gold = theme === 'velvet' ? 'text-[var(--color-velvet-gold)]' : '';
+---
+
+<footer class:list={['mt-auto border-t', border, theme === 'velvet' && 'bg-[var(--color-velvet-surface)]']}>
+  <div class="mx-auto max-w-6xl px-4 py-12">
+    <div class="grid gap-10 md:grid-cols-3">
+      <div>
+        <p class:list={['text-lg font-semibold', theme === 'velvet' && 'font-[family-name:var(--font-display-velvet)] text-[var(--color-velvet-gold)]']}>
+          Magic by <span class="italic">Geo</span>
+        </p>
+        <p class:list={['mt-2 text-sm', muted]}>
+          Close-up magician based in {siteConfig.address.addressLocality}, {siteConfig.address.addressRegion}. Serving{' '}
+          {siteConfig.areaServed.slice(0, 4).join(', ')}, and the Lower Mainland.
+        </p>
+      </div>
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-wider text-white/80">Explore</p>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li><a class="underline-offset-4 hover:underline" href="/weddings/">Wedding magic</a></li>
+          <li><a class="underline-offset-4 hover:underline" href="/corporate-events/">Corporate events</a></li>
+          <li><a class="underline-offset-4 hover:underline" href="/private-parties/">Private parties</a></li>
+          <li><a class="underline-offset-4 hover:underline" href="/faq/">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-wider text-white/80">Service area (NAP)</p>
+        <address class:list={['mt-3 text-sm not-italic leading-relaxed', muted]}>
+          <span class:list={['font-medium text-white/90', gold]}>{siteConfig.businessName}</span><br />
+          {siteConfig.address.addressLocality}, {siteConfig.address.addressRegion}, {siteConfig.address.addressCountry}
+          <br />
+          <a class="mt-2 inline-block underline-offset-4 hover:underline" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+          <br />
+          <a class="mt-2 inline-block underline-offset-4 hover:underline" href="/#book">Request availability</a>
+        </address>
+      </div>
+    </div>
+    <p class:list={['mt-10 border-t pt-6 text-center text-xs', border, muted]}>
+      © {new Date().getFullYear()} {siteConfig.businessName}. All rights reserved.
+    </p>
+  </div>
+</footer>

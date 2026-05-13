@@ -1,0 +1,78 @@
+---
+interface Props {
+  theme?: 'velvet' | 'noir' | 'cinematic' | 'default';
+}
+
+const { theme = 'default' } = Astro.props;
+
+const cardBorder =
+  theme === 'velvet'
+    ? 'border-[var(--color-velvet-gold)]/20 hover:border-[var(--color-velvet-gold)]/50'
+    : 'border-white/10 hover:border-white/25';
+
+const headingFont =
+  theme === 'velvet'
+    ? 'font-[family-name:var(--font-display-velvet)] text-[var(--color-velvet-gold)]'
+    : theme === 'noir'
+      ? 'font-[family-name:var(--font-display-noir)] text-white'
+      : theme === 'cinematic'
+        ? 'font-[family-name:var(--font-display-cinematic)] text-white'
+        : 'font-[family-name:var(--font-display-noir)] text-white';
+
+const services = [
+  {
+    href: '/weddings/',
+    emoji: '💍',
+    title: 'Weddings & receptions',
+    body:
+      'Cocktail-hour strolling magic and reception moments that spark conversation — perfect for Vancouver, Surrey, and Fraser Valley celebrations.',
+  },
+  {
+    href: '/corporate-events/',
+    emoji: '🪄',
+    title: 'Corporate events',
+    body:
+      'Close-up magic for galas, client nights, and team socials — an elegant icebreaker for professionals across the Lower Mainland.',
+  },
+  {
+    href: '/private-parties/',
+    emoji: '✨',
+    title: 'Private parties',
+    body:
+      'Intimate astonishment for birthdays, anniversaries, and milestone gatherings — tailored to your crowd and venue.',
+  },
+];
+---
+
+<section class="py-16 md:py-24" aria-labelledby="services-heading">
+  <div class="mx-auto max-w-6xl px-4">
+    <h2 id="services-heading" class:list={['text-center text-3xl md:text-4xl', headingFont]}>
+      Performance types
+    </h2>
+    <p class="mx-auto mt-4 max-w-2xl text-center text-base text-white/70">
+      Close-up, strolling magic where the miracles happen inches from your guests — ideal for mingling, cocktails, and connection.
+    </p>
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      {
+        services.map((s) => (
+          <a
+            href={s.href}
+            class:list={[
+              'group flex flex-col rounded-2xl border bg-black/20 p-6 transition',
+              cardBorder,
+            ]}
+          >
+            <span class="text-3xl" aria-hidden="true">
+              {s.emoji}
+            </span>
+            <h3 class="mt-4 text-xl font-semibold text-white">{s.title}</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-white/70">{s.body}</p>
+            <span class="mt-4 text-sm font-semibold text-amber-300/90 group-hover:text-amber-200">
+              Learn more →
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

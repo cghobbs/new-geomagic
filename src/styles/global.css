@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+/* Font families loaded in BaseLayout */
+@theme {
+  --font-display-velvet: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-body-velvet: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+  --font-display-noir: "Fraunces", ui-serif, Georgia, serif;
+  --font-body-noir: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  --font-display-cinematic: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-body-cinematic: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+
+  --color-velvet-bg: #070604;
+  --color-velvet-surface: #12100c;
+  --color-velvet-gold: #d4af6a;
+  --color-velvet-gold-muted: #b8975a;
+  --color-velvet-text: #f4efe6;
+
+  --color-noir-bg: #0c0e14;
+  --color-noir-surface: #141824;
+  --color-noir-accent: #9b7ed9;
+  --color-noir-accent-soft: #c4b5e8;
+  --color-noir-text: #eef0f7;
+
+  --color-cin-bg: #050505;
+  --color-cin-surface: #111111;
+  --color-cin-text: #fafafa;
+  --color-cin-muted: #a3a3a3;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply antialiased;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-amber-300;
+  }
+
+  .theme-velvet :focus-visible {
+    outline-color: var(--color-velvet-gold);
+  }
+
+  .theme-noir :focus-visible {
+    outline-color: var(--color-noir-accent-soft);
+  }
+
+  .theme-cinematic :focus-visible {
+    outline-color: #fff;
+  }
+}
+
+/* Screen-reader only (nav toggle, honeypot label) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+

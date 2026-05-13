@@ -1,0 +1,59 @@
+---
+interface Props {
+  theme?: 'velvet' | 'noir' | 'cinematic' | 'default';
+}
+
+const { theme = 'default' } = Astro.props;
+
+const headingFont =
+  theme === 'velvet'
+    ? 'font-[family-name:var(--font-display-velvet)] text-[var(--color-velvet-gold)]'
+    : theme === 'noir'
+      ? 'font-[family-name:var(--font-display-noir)] text-white'
+      : theme === 'cinematic'
+        ? 'font-[family-name:var(--font-display-cinematic)] text-white'
+        : 'font-[family-name:var(--font-display-noir)] text-white';
+
+/** TODO: Replace placeholders with real quotes from your clients */
+const testimonials = [
+  {
+    quote: '“Placeholder — paste your first real testimonial here.”',
+    name: 'Client name',
+    role: 'Event type · City',
+  },
+  {
+    quote: '“Placeholder — a second short quote about the experience.”',
+    name: 'Client name',
+    role: 'Event type · City',
+  },
+  {
+    quote: '“Placeholder — mention reactions, professionalism, or a standout moment.”',
+    name: 'Client name',
+    role: 'Event type · City',
+  },
+];
+---
+
+<section class="py-16 md:py-24" aria-labelledby="testimonials-heading">
+  <div class="mx-auto max-w-6xl px-4">
+    <h2 id="testimonials-heading" class:list={['text-center text-3xl md:text-4xl', headingFont]}>
+      What hosts say
+    </h2>
+    <p class="mx-auto mt-3 max-w-xl text-center text-sm text-amber-200/80">
+      TODO: Replace placeholder quotes in <code class="rounded bg-white/10 px-1">src/components/Testimonials.astro</code>
+    </p>
+    <div class="mt-10 grid gap-6 md:grid-cols-3">
+      {
+        testimonials.map((t) => (
+          <figure class="flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+            <blockquote class="flex-1 text-sm leading-relaxed text-white/85">{t.quote}</blockquote>
+            <figcaption class="mt-4 text-xs font-medium uppercase tracking-wider text-white/50">
+              {t.name}
+              <span class="block normal-case text-white/40">{t.role}</span>
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+</section>

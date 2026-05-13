@@ -1,0 +1,65 @@
+---
+const images = [
+  {
+    src: '/images/photo-3.jpg',
+    alt: 'A spectator holds her selected playing card in surprise during a close-up magic performance',
+    width: 1280,
+    height: 853,
+  },
+  {
+    src: '/images/photo-5.jpg',
+    alt: 'Geo and a guest share a high-five across the table after a moment of close-up magic',
+    width: 1280,
+    height: 853,
+  },
+  {
+    src: '/images/photo-1.jpg',
+    alt: 'Geo surprises a small group of guests at a fundraising event with close-up magic',
+    width: 1280,
+    height: 853,
+  },
+];
+
+interface Props {
+  theme?: 'velvet' | 'noir' | 'cinematic' | 'default';
+}
+
+const { theme = 'default' } = Astro.props;
+
+const headingFont =
+  theme === 'velvet'
+    ? 'font-[family-name:var(--font-display-velvet)] text-[var(--color-velvet-gold)]'
+    : theme === 'noir'
+      ? 'font-[family-name:var(--font-display-noir)] text-white'
+      : theme === 'cinematic'
+        ? 'font-[family-name:var(--font-display-cinematic)] text-white'
+        : 'font-[family-name:var(--font-display-noir)] text-white';
+---
+
+<section class="border-y border-white/10 bg-black/20 py-16 md:py-24" aria-labelledby="gallery-heading">
+  <div class="mx-auto max-w-6xl px-4">
+    <h2 id="gallery-heading" class:list={['text-center text-3xl md:text-4xl', headingFont]}>
+      Moments of wonder
+    </h2>
+    <p class="mx-auto mt-3 max-w-2xl text-center text-base text-white/70">
+      Real reactions from real events around Greater Vancouver.
+    </p>
+    <div class="mt-10 grid gap-4 sm:grid-cols-3">
+      {
+        images.map((img) => (
+          <div class="overflow-hidden rounded-2xl border border-white/10 bg-black/40">
+            <img
+              src={img.src}
+              alt={img.alt}
+              width={img.width}
+              height={img.height}
+              loading="lazy"
+              decoding="async"
+              class="aspect-[4/3] w-full object-cover transition duration-500 hover:scale-[1.02]"
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

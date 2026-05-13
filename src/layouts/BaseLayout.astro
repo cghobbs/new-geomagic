@@ -1,0 +1,174 @@
+---
+import '../styles/global.css';
+import { siteConfig } from '../data/site';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import MobileBookingCta from '../components/MobileBookingCta.astro';
+
+interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  title: string;
+  description?: string;
+  pathname: string;
+  /** Visual theme for typography / accents */
+  theme?: 'velvet' | 'noir' | 'cinematic' | 'default';
+  ogImage?: string;
+  breadcrumbs?: BreadcrumbItem[];
+  faqItems?: FaqItem[];
+  /** Skip default chrome (e.g. minimal thank-you page) */
+  minimal?: boolean;
+}
+
+const {
+  title,
+  description = siteConfig.defaultDescription,
+  pathname,
+  theme = 'default',
+  ogImage = '/social-card.svg',
+  breadcrumbs,
+  faqItems,
+  minimal = false,
+} = Astro.props;
+
+const canonicalURL = new URL(pathname, siteConfig.siteUrl).href;
+const ogImageURL = new URL(ogImage, siteConfig.siteUrl).href;
+
+const themeClass =
+  theme === 'velvet'
+    ? 'theme-velvet bg-[var(--color-velvet-bg)] text-[var(--color-velvet-text)] font-[family-name:var(--font-body-velvet)]'
+    : theme === 'noir'
+      ? 'theme-noir bg-[var(--color-noir-bg)] text-[var(--color-noir-text)] font-[family-name:var(--font-body-noir)]'
+      : theme === 'cinematic'
+        ? 'theme-cinematic bg-[var(--color-cin-bg)] text-[var(--color-cin-text)] font-[family-name:var(--font-body-cinematic)]'
+        : 'theme-default bg-zinc-950 text-zinc-100 font-[family-name:var(--font-body-noir)]';
+
+const localBusinessJson = {
+  '@context': 'https://schema.org',
+  '@type': 'EntertainmentBusiness',
+  name: siteConfig.businessName,
+  description: siteConfig.defaultDescription,
+  url: siteConfig.siteUrl,
+  image: ogImageURL,
+  email: siteConfig.email,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: siteConfig.address.addressLocality,
+    addressRegion: siteConfig.address.addressRegion,
+    addressCountry: siteConfig.address.addressCountry,
+  },
+  areaServed: siteConfig.areaServed.map((name) => ({
+    '@type': 'City',
+    name,
+  })),
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'Booking inquiries',
+    email: siteConfig.email,
+    areaServed: 'CA',
+    availableLanguage: ['English'],
+  },
+  priceRange: '$$',
+};
+
+const sameAsLinks = [siteConfig.social.instagram, siteConfig.social.youtube].filter(Boolean);
+
+const personJson = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: siteConfig.performerName,
+  jobTitle: 'Close-up Magician',
+  url: siteConfig.siteUrl,
+  image: ogImageURL,
+  worksFor: { '@type': 'Organization', name: siteConfig.businessName },
+  knowsAbout: [
+    'Close-up magic',
+    'Sleight of hand',
+    'Corporate entertainment',
+    'Wedding entertainment',
+    'Strolling magic',
+  ],
+  ...(sameAsLinks.length ? { sameAs: sameAsLinks } : {}),
+};
+
+const breadcrumbJson =
+  breadcrumbs && breadcrumbs.length
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: breadcrumbs.map((b, i) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          name: b.name,
+          item: new URL(b.url, siteConfig.siteUrl).href,
+        })),
+      }
+    : null;
+
+const faqJson =
+  faqItems && faqItems.length
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqItems.map((f) => ({
+          '@type': 'Question',
+          name: f.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: f.answer,
+          },
+        })),
+      }
+    : null;
+---
+
+<!doctype html>
+<html lang="en-CA" class:list={[themeClass]}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index,follow" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:locale" content="en_CA" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+    <!-- Preconnect + fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessJson)} />
+    <script type="application/ld+json" set:html={JSON.stringify(personJson)} />
+    {breadcrumbJson && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJson)} />}
+    {faqJson && <script type="application/ld+json" set:html={JSON.stringify(faqJson)} />}
+  </head>
+  <body class="flex min-h-screen flex-col pb-24 md:pb-0">
+    {!minimal && <Nav theme={theme} />}
+    <main id="main-content" class="flex-1">
+      <slot />
+    </main>
+    {!minimal && <Footer theme={theme} />}
+    {!minimal && <MobileBookingCta theme={theme} />}
+  </body>
+</html>

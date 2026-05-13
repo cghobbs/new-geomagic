@@ -1,0 +1,34 @@
+---
+interface Props {
+  theme?: 'velvet' | 'noir' | 'cinematic' | 'default';
+}
+
+const { theme = 'default' } = Astro.props;
+
+const btn =
+  theme === 'velvet'
+    ? 'bg-[var(--color-velvet-gold)] text-[var(--color-velvet-bg)]'
+    : theme === 'noir'
+      ? 'bg-[var(--color-noir-accent)] text-white'
+      : theme === 'cinematic'
+        ? 'bg-white text-black'
+        : 'bg-amber-400 text-zinc-950';
+---
+
+<div
+  class:list={[
+    'fixed bottom-0 left-0 right-0 z-40 border-t border-white/10 bg-black/90 p-3 backdrop-blur md:hidden',
+  ]}
+  role="region"
+  aria-label="Book Geo"
+>
+  <a
+    href="/#book"
+    class:list={[
+      'flex min-h-12 w-full items-center justify-center rounded-full text-sm font-semibold shadow-lg',
+      btn,
+    ]}
+  >
+    Check my date
+  </a>
+</div>
