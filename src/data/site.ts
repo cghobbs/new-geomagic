@@ -1,6 +1,6 @@
 /** Central site / SEO / NAP data. Edit before launch. */
 export const siteConfig = {
-  siteUrl: 'https://geomagic.ca',
+  siteUrl: 'https://www.geomagic.ca',
   businessName: 'Magic by Geo',
   performerName: 'Geo',
   tagline: 'Experience the art of astonishment, close-up magic for Vancouver, Surrey, and the Lower Mainland',

@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://geomagic.ca',
+  site: 'https://www.geomagic.ca',
   trailingSlash: 'always',
 
   vite: {

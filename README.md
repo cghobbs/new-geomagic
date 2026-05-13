@@ -11,7 +11,7 @@ npm run dev
 ```
 
 - **Local:** [http://localhost:4321](http://localhost:4321)
-- **Production URL (canonical):** [https://geomagic.ca](https://geomagic.ca) — set in [`astro.config.mjs`](astro.config.mjs) and [`src/data/site.ts`](src/data/site.ts).
+- **Production URL (canonical):** [https://www.geomagic.ca](https://www.geomagic.ca). The apex `geomagic.ca` redirects to `www`. Canonical URL is set in [`astro.config.mjs`](astro.config.mjs) and [`src/data/site.ts`](src/data/site.ts).
 
 ## Design
 
