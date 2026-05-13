@@ -11,7 +11,7 @@ const breadcrumbs = [
 ];
 ---
 
-<BaseLayout title={title} description={description} pathname="/about/" theme="cinematic" breadcrumbs={breadcrumbs}>
+<BaseLayout title={title} description={description} pathname="/about/" theme="default" breadcrumbs={breadcrumbs}>
   <article class="mx-auto max-w-3xl px-4 py-16 md:py-20">
     <h1 class="text-4xl font-semibold tracking-tight text-white md:text-5xl">About Geo</h1>
     <p class="mt-6 text-lg leading-relaxed text-white/75">
@@ -32,8 +32,8 @@ const breadcrumbs = [
     </p>
     <p class="mt-10">
       Want to see if we’re a fit?{' '}
-      <a href="/#book" class="font-semibold text-amber-300 underline-offset-4 hover:underline">Tell me about your event</a>.
+      <a href="/#book" class="font-semibold text-amber-300 underline-offset-4 hover:underline">Check Availability</a>.
     </p>
   </article>
-  <BookingForm theme="cinematic" />
+  <BookingForm theme="default" />
 </BaseLayout>

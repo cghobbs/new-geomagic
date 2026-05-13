@@ -30,7 +30,7 @@ const serviceJson = {
   title={title}
   description={description}
   pathname="/corporate-events/"
-  theme="cinematic"
+  theme="default"
   breadcrumbs={breadcrumbs}
 >
   <script type="application/ld+json" set:html={JSON.stringify(serviceJson)} />
@@ -75,9 +75,9 @@ const serviceJson = {
       <li>Gala dinners (cocktail and pre-program mingling)</li>
     </ul>
     <p class="mt-10">
-      <a href="/#book" class="font-semibold text-amber-300 underline-offset-4 hover:underline">Request availability</a>
+      <a href="/#book" class="font-semibold text-amber-300 underline-offset-4 hover:underline">Check Availability</a>
       {' '}— include your run-of-show, guest count, and dress code.
     </p>
   </article>
-  <BookingForm theme="cinematic" />
+  <BookingForm theme="default" />
 </BaseLayout>
