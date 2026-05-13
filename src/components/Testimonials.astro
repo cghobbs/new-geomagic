@@ -14,46 +14,44 @@ const headingFont =
         ? 'font-[family-name:var(--font-display-cinematic)] text-white'
         : 'font-[family-name:var(--font-display-noir)] text-white';
 
-/** TODO: Replace placeholders with real quotes from your clients */
-const testimonials = [
-  {
-    quote: '“Placeholder: paste your first real testimonial here.”',
-    name: 'Client name',
-    role: 'Event type · City',
-  },
-  {
-    quote: '“Placeholder, a second short quote about the experience.”',
-    name: 'Client name',
-    role: 'Event type · City',
-  },
-  {
-    quote: '“Placeholder: mention reactions, professionalism, or a standout moment.”',
-    name: 'Client name',
-    role: 'Event type · City',
-  },
+const lead =
+  "We hired Geo for our Vancouver fundraising gala, and it was a huge success. Geo's whole process of booking and his attention to detail was wonderful. The guests we had were shocked and amazed with his magic and really felt that:";
+
+const guestQuotes = [
+  'It really added an extra level of flair and class to the event',
+  'It brought some fun and excitement to the event as we were arriving and getting settled into the event',
+  'I came alone and it was nice having an excuse to join a group of people and watch a little show together',
+  "He's such a classy magician, no crude or strange jokes, just quality magic and fun!",
 ];
 ---
 
 <section class="py-16 md:py-24" aria-labelledby="testimonials-heading">
   <div class="mx-auto max-w-6xl px-4">
     <h2 id="testimonials-heading" class:list={['text-center text-3xl md:text-4xl', headingFont]}>
-      What hosts say
+      What clients say
     </h2>
-    <p class="mx-auto mt-3 max-w-xl text-center text-sm text-amber-200/80">
-      TODO: Replace placeholder quotes in <code class="rounded bg-white/10 px-1">src/components/Testimonials.astro</code>
-    </p>
-    <div class="mt-10 grid gap-6 md:grid-cols-3">
-      {
-        testimonials.map((t) => (
-          <figure class="flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-6">
-            <blockquote class="flex-1 text-sm leading-relaxed text-white/85">{t.quote}</blockquote>
-            <figcaption class="mt-4 text-xs font-medium uppercase tracking-wider text-white/50">
-              {t.name}
-              <span class="block normal-case text-white/40">{t.role}</span>
-            </figcaption>
-          </figure>
-        ))
-      }
+    <div class="mx-auto mt-10 max-w-[42rem]">
+      <figure class="flex flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-6 md:p-8">
+        <blockquote class="text-sm leading-relaxed text-white/85">
+          <p>{lead}</p>
+          <ul class="mt-4 list-none space-y-3 border-t border-white/10 pt-4 pl-0" role="list">
+            {
+              guestQuotes.map((q) => (
+                <li class="text-sm leading-relaxed text-white/80">
+                  <span class="text-white/50" aria-hidden="true">&ldquo;</span>
+                  {q}
+                  <span class="text-white/50" aria-hidden="true">&rdquo;</span>
+                </li>
+              ))
+            }
+          </ul>
+        </blockquote>
+        <figcaption class="mt-6 border-t border-white/10 pt-4 text-xs font-medium uppercase tracking-wider text-white/50">
+          Darian Kovacs
+          <span class="mt-1 block normal-case text-white/40">09 Mar 2025</span>
+          <span class="mt-1 block normal-case text-white/45">Vancouver fundraising gala</span>
+        </figcaption>
+      </figure>
     </div>
   </div>
 </section>
