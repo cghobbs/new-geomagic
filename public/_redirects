@@ -1,3 +1,5 @@
 # Legacy URLs from the previous (Wix-style) site. They are gone for good.
 # 410 (vs the default 404) tells Google to drop them from the index faster.
-/english-*  410
+# Netlify requires a `to` target even for status-only rules; we point at the
+# homepage but the response status is the 410 we care about.
+/english-*  /  410!
