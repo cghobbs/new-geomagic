@@ -1,0 +1,3 @@
+# Legacy URLs from the previous (Wix-style) site. They are gone for good.
+# 410 (vs the default 404) tells Google to drop them from the index faster.
+/english-*  410
