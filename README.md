@@ -1,4 +1,4 @@
-# Magic by Geo — `new-geomagic`
+# Magic by Geo: `new-geomagic`
 
 Mobile-first marketing site for **Geo**, a close-up magician (Surrey / Greater Vancouver). Built with **Astro 6**, **Tailwind CSS 4**, and **TypeScript**. Optimized for **SEO** (meta, Open Graph, JSON-LD, sitemap) and **Netlify** (static deploy + Forms).
 
@@ -15,7 +15,7 @@ npm run dev
 
 ## Design
 
-The site uses a single **Cinematic** dark theme — full-bleed hero photo, restrained editorial typography, near-black surfaces, white accents. Defined in [`src/styles/global.css`](src/styles/global.css) (`--color-cin-*` variables) and applied via `theme="cinematic"` on each page.
+The site uses a single **Cinematic** dark theme: full-bleed hero photo, restrained editorial typography, near-black surfaces, white accents. Defined in [`src/styles/global.css`](src/styles/global.css) (`--color-cin-*` variables) and applied via `theme="cinematic"` on each page.
 
 ## Deploy to Netlify
 
