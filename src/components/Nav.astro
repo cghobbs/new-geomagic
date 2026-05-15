@@ -12,7 +12,7 @@ const linkClass =
       ? 'text-[var(--color-noir-text)]/80 hover:text-[var(--color-noir-accent-soft)]'
       : theme === 'cinematic'
         ? 'text-white/80 hover:text-white'
-        : 'text-zinc-300 hover:text-white';
+        : 'text-white/80 hover:text-white';
 
 const ctaClass =
   theme === 'velvet'
@@ -20,7 +20,7 @@ const ctaClass =
     : theme === 'noir'
       ? 'bg-[var(--color-noir-accent)] text-white hover:bg-[#b49ae8]'
       : theme === 'cinematic'
-        ? 'bg-white text-black hover:bg-zinc-200'
+        ? 'bg-amber-400 text-zinc-950 hover:bg-amber-300'
         : 'bg-amber-400 text-zinc-950 hover:bg-amber-300';
 
 const barBg =
@@ -30,7 +30,7 @@ const barBg =
       ? 'bg-[var(--color-noir-surface)]/90 border-white/10'
       : theme === 'cinematic'
         ? 'bg-black/50 border-white/10'
-        : 'bg-zinc-900/90 border-white/10';
+        : 'bg-black/50 border-white/10';
 
 const navId = 'primary-nav';
 ---
@@ -49,7 +49,7 @@ const navId = 'primary-nav';
         theme === 'velvet' && 'font-[family-name:var(--font-display-velvet)] text-[var(--color-velvet-gold)]',
         theme === 'noir' && 'font-[family-name:var(--font-display-noir)] text-white',
         theme === 'cinematic' && 'font-[family-name:var(--font-display-cinematic)] text-white tracking-wide',
-        theme === 'default' && 'font-[family-name:var(--font-display-noir)] text-white',
+        theme === 'default' && 'font-[family-name:var(--font-display-cinematic)] text-white tracking-wide',
       ]}
     >
       Magic by <span class="italic">Geo</span>
