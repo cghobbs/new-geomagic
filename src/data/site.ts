@@ -9,7 +9,7 @@ export const siteConfig = {
   defaultDescription:
     'Geo is a Vancouver close-up magician. Strolling magic for weddings, corporate events, and private parties across Greater Vancouver, Surrey, Burnaby, Richmond, and the Lower Mainland.',
   email: 'hello@geomagic.ca',
-  phone: '',
+  phone: '(604) 230-1982',
   address: {
     addressLocality: 'Surrey',
     addressRegion: 'BC',
@@ -30,7 +30,7 @@ export const siteConfig = {
   ],
   social: {
     // Add when ready; used in Person sameAs
-    instagram: '',
+    instagram: 'https://www.instagram.com/magicbygeo/',
     youtube: '',
   },
 } as const;
