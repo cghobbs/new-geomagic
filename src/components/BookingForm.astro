@@ -82,7 +82,7 @@ const btn =
         <div class="grid gap-5 sm:grid-cols-2">
           <div>
             <label for="event-date" class:list={['block text-sm font-medium', label]}>Event date</label>
-            <input class={input} type="date" id="event-date" name="event-date" />
+            <input class={input.replace('[color-scheme:dark]', '[color-scheme:light]')} type="date" id="event-date" name="event-date" />
           </div>
           <div>
             <label for="guest-count" class:list={['block text-sm font-medium', label]}>Guest count (approx.)</label>

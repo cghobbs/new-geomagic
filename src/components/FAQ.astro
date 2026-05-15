@@ -7,9 +7,10 @@ interface Props {
   /** If omitted, uses first 3 FAQ entries from `src/data/faq.ts` */
   items?: FaqItem[];
   id?: string;
+  showMoreLink?: boolean;
 }
 
-const { theme = 'default', items = homeFaqPreview, id } = Astro.props;
+const { theme = 'default', items = homeFaqPreview, id, showMoreLink = false } = Astro.props;
 
 const headingFont =
   theme === 'velvet'
@@ -43,5 +44,12 @@ const headingFont =
         ))
       }
     </div>
+    {showMoreLink && (
+      <div class="mt-8 text-center">
+        <a href="/faq/" class="text-sm font-semibold text-amber-300/90 underline-offset-4 hover:underline">
+          View all FAQs &rarr;
+        </a>
+      </div>
+    )}
   </div>
 </section>
