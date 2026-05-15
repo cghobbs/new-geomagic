@@ -86,6 +86,35 @@ const localBusinessJson = {
     availableLanguage: ['English'],
   },
   priceRange: '$$',
+  makesOffer: [
+    {
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: 'Corporate close-up magic',
+        url: `${siteConfig.siteUrl}/corporate-events/`,
+        description: 'Strolling close-up magic for galas, holiday parties, client appreciation events, and fundraising receptions.',
+      },
+    },
+    {
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: 'Wedding close-up magic',
+        url: `${siteConfig.siteUrl}/weddings/`,
+        description: 'Interactive wedding magic for cocktail hours and receptions across Greater Vancouver.',
+      },
+    },
+    {
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: 'Private party close-up magic',
+        url: `${siteConfig.siteUrl}/private-parties/`,
+        description: 'Close-up magic for birthdays, anniversaries, and private celebrations.',
+      },
+    },
+  ],
 };
 
 const websiteJson = {
@@ -114,9 +143,13 @@ const personJson = {
   knowsAbout: [
     'Close-up magic',
     'Sleight of hand',
+    'Strolling magic',
+    'Card magic',
+    'Coin magic',
     'Corporate entertainment',
     'Wedding entertainment',
-    'Strolling magic',
+    'Private party entertainment',
+    'Fundraising gala entertainment',
   ],
   ...(sameAsLinks.length ? { sameAs: sameAsLinks } : {}),
 };
@@ -164,6 +197,7 @@ const faqJson =
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="canonical" href={canonicalURL} />
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap-index.xml" />
+    <link rel="llmstxt" href="/llms.txt" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
