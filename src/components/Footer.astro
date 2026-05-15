@@ -48,7 +48,7 @@ const gold = theme === 'velvet' ? 'text-[var(--color-velvet-gold)]' : '';
           <br />
           <a class="mt-2 inline-block underline-offset-4 hover:underline" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
           <br />
-          <a class="mt-2 inline-block underline-offset-4 hover:underline" href="/#book">Check Availability</a>
+          <a class="mt-2 inline-block underline-offset-4 hover:underline" href="/#book" onclick="window.sa_event?.('check_availability_clicked')">Check Availability</a>
         </address>
       </div>
     </div>

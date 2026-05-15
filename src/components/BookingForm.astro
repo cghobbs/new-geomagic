@@ -108,6 +108,22 @@ const btn =
   </div>
 </section>
 
+<script>
+  const form = document.querySelector('form[name="booking"]') as HTMLFormElement | null;
+  if (form) {
+    let started = false;
+    form.addEventListener('focusin', () => {
+      if (!started) {
+        started = true;
+        window.sa_event?.('booking_form_started');
+      }
+    });
+    form.addEventListener('submit', () => {
+      window.sa_event?.('booking_form_submitted');
+    });
+  }
+</script>
+
 <style>
   input[type="date"]::-webkit-calendar-picker-indicator {
     filter: invert(1);
