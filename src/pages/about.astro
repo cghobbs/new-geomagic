@@ -4,7 +4,7 @@ import BookingForm from '../components/BookingForm.astro';
 
 const title = 'About Geo | Close-Up Magician | Surrey & Vancouver';
 const description =
-  'I\'m Geo, a Surrey-based close-up magician. Close-up magic for weddings, corporate events, and private parties across Greater Vancouver.';
+  "I'm Geo, a Surrey-based close-up magician. Close-up magic for weddings, corporate events, and private parties across Greater Vancouver.";
 const breadcrumbs = [
   { name: 'Home', url: '/' },
   { name: 'About', url: '/about/' },
@@ -13,29 +13,73 @@ const breadcrumbs = [
 
 <BaseLayout title={title} description={description} pathname="/about/" theme="default" breadcrumbs={breadcrumbs}>
   <article class="mx-auto max-w-3xl px-4 py-16 md:py-20">
-    <h1 class="text-4xl font-semibold tracking-tight text-white md:text-5xl">About Geo</h1>
-    <p class="mt-6 text-lg leading-relaxed text-white/75">
-      Hello, I&apos;m <strong class="text-white">Geo</strong> and I&apos;m a close-up magician based in <strong class="text-white">Surrey, BC</strong>, serving{' '}
-      <strong class="text-white">Greater Vancouver</strong>. I elevate events with mind-bending magic and unforgettable moments of wonder, perfect
-      for corporate events, private parties, and special celebrations.
-    </p>
-    <h2 class="mt-12 text-2xl font-semibold text-white">Close-up magic that creates genuine reactions</h2>
-    <p class="mt-4 leading-relaxed text-white/75">
-      Close-up, strolling magic is an interactive experience where the magic happens right in the hands of your guests. As I move from group to
-      group, I perform mind-blowing magic with cards, coins, and everyday objects, creating personal moments of astonishment. It&apos;s the perfect
-      way to break the ice, spark conversations, and leave a lasting impression at any event.
-    </p>
-    <h2 class="mt-12 text-2xl font-semibold text-white">Who I perform for</h2>
-    <p class="mt-4 leading-relaxed text-white/75">
-      <strong class="text-white">Weddings and private parties</strong> where you want guests brought together with interactive magic they remember.{' '}
-      <strong class="text-white">Corporate events</strong> where you want conversation and connection, tailored to your brand.{' '}
-      <strong class="text-white">Fundraising galas</strong> where magic can highlight your cause and keep guests engaged. If you value details and a
-      polished guest experience, we will likely be a strong fit.
-    </p>
-    <p class="mt-10">
-      Want to see if we&apos;re a fit?{' '}
-      <a href="/#book" class="font-semibold text-amber-300 underline-offset-4 hover:underline">Check Availability</a>.
-    </p>
+
+    <p class="text-xs font-semibold uppercase tracking-[0.25em] text-amber-300/90">About</p>
+    <h1 class="mt-3 text-4xl font-semibold tracking-tight text-white md:text-5xl">About Geo</h1>
+
+    <!-- Origin story -->
+    <h2 class="mt-14 text-2xl font-semibold text-white">Not your typical magician's origin story</h2>
+    <div class="mt-5 space-y-4 leading-relaxed text-white/75">
+      <p>Most magicians will tell you they were obsessed with magic as a kid. I was not.</p>
+      <p>
+        Sure, I had the same wide-eyed moment every kid has when they see a card trick for the first time. But it never went further than that. I grew up, went to university, built a career in tech, got married, had kids — and magic was nowhere on the radar.
+      </p>
+      <p>
+        Then, sometime in my 40s, my wife Gina and I went to see <a href="https://www.hiddenwonders.ca/" target="_blank" rel="noopener" class="font-medium text-amber-300 underline-offset-4 hover:underline">Shawn Farquhar</a> perform at Hidden Wonders, his speakeasy magic show in New Westminster. And something clicked. Hard. I went home that night and started digging, and I have not really come up for air since. Late to the party, fully committed.
+      </p>
+    </div>
+
+    <hr class="mt-14 border-white/10" />
+
+    <!-- Day job -->
+    <h2 class="mt-14 text-2xl font-semibold text-white">The day job <span class="text-white/30">(it explains a lot)</span></h2>
+    <div class="mt-5 space-y-4 leading-relaxed text-white/75">
+      <p>
+        When I am not performing, I am VP of Product at <a href="https://zapier.com" target="_blank" rel="noopener" class="font-medium text-amber-300 underline-offset-4 hover:underline">Zapier</a> — where I joined nearly a decade ago as the company's very first Product Manager and have been part of growing it into one of the most widely used automation platforms in the world, serving millions of businesses and a significant chunk of the Fortune 1000.
+      </p>
+      <p>
+        I speak at conferences, host keynote sessions, and have been featured on podcasts including The Product Podcast, It Shipped That Way, and People of Product. The topics I care most about are leadership, how teams navigate change, and the very human challenge of showing up well in a world that keeps moving faster.
+      </p>
+      <p>
+        That background shapes how I approach magic too. I think carefully about the experience I am creating, not just the tricks I am performing. Every event is different. Every room reads differently. The details matter.
+      </p>
+    </div>
+
+    <hr class="mt-14 border-white/10" />
+
+    <!-- Home base -->
+    <h2 class="mt-14 text-2xl font-semibold text-white">The home base</h2>
+    <div class="mt-5 space-y-4 leading-relaxed text-white/75">
+      <p>
+        I live in Surrey, BC with Gina, our three teenage daughters, and our dog Bella — who has never once been fooled by a card trick.
+      </p>
+      <p>
+        When I get a stretch of time to myself, you will find me in the workshop doing woodwork, or out on Shuswap Lake, which is about as good as life gets.
+      </p>
+    </div>
+
+    <hr class="mt-14 border-white/10" />
+
+    <!-- Why hire me -->
+    <h2 class="mt-14 text-2xl font-semibold text-white">Why hire someone like me?</h2>
+    <div class="mt-5 space-y-4 leading-relaxed text-white/75">
+      <p>
+        Honestly? Because I am not doing this because I have to. I have a career I love and a full life outside of magic. I perform because I genuinely love what happens in a room when something impossible occurs right in front of someone. That look on a person's face — the one where they forget for a second that they are a composed adult at a professional event — that is what I am after every single time.
+      </p>
+      <p>
+        If you want someone who shows up prepared, takes your event seriously, and cares about the experience your guests walk away with, I think we will get along well.
+      </p>
+    </div>
+
+    <div class="mt-12 text-center">
+      <a
+        href="#book"
+        class="inline-flex items-center gap-2 rounded-full bg-amber-400 px-8 py-3 text-sm font-semibold text-zinc-950 transition hover:bg-amber-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-300"
+      >
+        Check Availability
+      </a>
+    </div>
+
   </article>
   <BookingForm theme="default" />
 </BaseLayout>

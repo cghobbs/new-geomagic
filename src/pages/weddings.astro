@@ -22,10 +22,51 @@ const serviceJson = {
   areaServed: siteConfig.areaServed.map((name) => ({ '@type': 'City', name })),
   serviceType: 'Wedding entertainment',
 };
+
+const packages = [
+  {
+    icon: '🥂',
+    name: 'Strolling Magic',
+    tagline: 'The perfect icebreaker',
+    body: 'During cocktail hour, patio mingling, or a reception "golden hour," I move from group to group creating intimate moments of wonder for your guests. It is unhurried, conversational, and tailored to the room. Your guests will not just watch the magic happen — they will be part of it.',
+    idealFor: 'Cocktail receptions, mingling periods, and any window where guests are on their feet and mixing.',
+    featured: false,
+  },
+  {
+    icon: '✨',
+    name: 'Show + Strolling',
+    tagline: 'A complete entertainment experience',
+    body: 'This package combines a 30-minute stage show with a strolling close-up set, giving your guests two distinct experiences in one evening. The stage show gathers your guests together for a shared moment of spectacle — mind-reading, impossible predictions, and jaw-dropping moments for the whole room. Then I work the room one-on-one, creating up-close personal wonder for each group.',
+    idealFor: 'Receptions where you want a defined entertainment highlight alongside ongoing mingling magic.',
+    featured: false,
+  },
+  {
+    icon: '💍',
+    name: 'The Full Celebration',
+    tagline: 'Magic + MC',
+    body: 'For couples who want a seamlessly hosted evening from start to finish, this package adds professional wedding MC services to the full show and strolling experience. I will keep the energy moving, introduce key moments (first dance, speeches, toasts, cake cutting), and handle the room logistics — so you never have to think about it.',
+    idealFor: 'Receptions where you want one trusted entertainer to hold the whole evening together.',
+    featured: true,
+  },
+];
+
+const expectItems = [
+  'Dress code matched to your celebration (black-tie adjacent when needed).',
+  'A pre-event conversation to align on timing, tone, and any moments that matter most.',
+  'Coordination with your venue coordinator or wedding planner.',
+  'A performance style that is warm, inclusive, and never crude or off-colour.',
+];
+
+const areas = [
+  'Vancouver', 'Burnaby', 'Richmond', 'North Vancouver',
+  'West Vancouver', 'New Westminster', 'Tri-Cities', 'Langley', 'White Rock', 'Surrey',
+];
 ---
 
 <BaseLayout title={title} description={description} pathname="/weddings/" theme="default" breadcrumbs={breadcrumbs}>
   <script type="application/ld+json" set:html={JSON.stringify(serviceJson)} />
+
+  <!-- Hero -->
   <div class="relative">
     <div class="aspect-[16/7] w-full overflow-hidden md:aspect-[16/6]">
       <Picture
@@ -42,37 +83,126 @@ const serviceJson = {
       <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent"></div>
     </div>
   </div>
-  <article class="mx-auto max-w-3xl px-4 py-16 md:py-20">
+
+  <!-- Intro -->
+  <div class="mx-auto max-w-3xl px-4 pt-16 md:pt-20">
     <p class="text-xs font-semibold uppercase tracking-[0.25em] text-amber-300/90">Weddings & receptions</p>
-    <h1 class="mt-3 text-4xl font-semibold tracking-tight text-white md:text-5xl">Wedding magician for Vancouver, Surrey & the Lower Mainland</h1>
+    <h1 class="mt-3 text-4xl font-semibold tracking-tight text-white md:text-5xl">
+      Wedding magician for Vancouver, Surrey & the Lower Mainland
+    </h1>
     <p class="mt-6 text-lg leading-relaxed text-white/75">
-      Make your special day unforgettable with magic that brings guests together. From close-up card tricks to mind-reading moments, I create{' '}
-      <strong class="text-white">interactive experiences</strong> that leave your guests amazed. Whether during cocktails or throughout your
-      reception, I help keep everyone engaged and talking about your event long after it is over.
+      Make your special day unforgettable with magic that brings guests together. From intimate moments of wonder during cocktail hour to a headline show your guests will be talking about for years, I offer wedding entertainment packages built around your celebration. Whether you want strolling close-up magic, a stage show, or the full experience with a wedding MC, I will work with you to make it feel effortless.
     </p>
-    <h2 class="mt-12 text-2xl font-semibold text-white">Why close-up magic works at weddings</h2>
-    <p class="mt-4 leading-relaxed text-white/75">
-      Close-up, strolling magic is the perfect icebreaker while photos run or tables settle. I move from group to group with refined, conversational
-      material, never interrupting speeches or pulling focus from you, just elevating the room while people mingle across Vancouver, Surrey, and the
-      Fraser Valley.
+  </div>
+
+  <!-- Why magic works -->
+  <div class="mx-auto max-w-3xl px-4 py-14">
+    <h2 class="text-2xl font-semibold text-white">Why magic works at weddings</h2>
+    <div class="mt-6 space-y-4 leading-relaxed text-white/75">
+      <p>
+        A wedding brings together people from every corner of your life. Magic is the great connector. It breaks the ice, draws people into conversation, and creates shared moments of genuine astonishment that guests carry with them long after the night ends.
+      </p>
+      <p>
+        I move through your event with a warm, conversational style, never competing with speeches or pulling focus from you and your partner. The magic happens right in front of your guests — sometimes right in their hands — which makes it feel personal in a way that no stage show alone ever could.
+      </p>
+    </div>
+  </div>
+
+  <!-- Packages -->
+  <div class="mx-auto max-w-5xl px-4 pb-14">
+    <h2 class="text-2xl font-semibold text-white md:text-3xl">Wedding packages</h2>
+    <div class="mt-8 grid gap-5 lg:grid-cols-3">
+      {packages.map((pkg) => (
+        <div
+          class:list={[
+            'flex flex-col rounded-2xl border p-6 transition',
+            pkg.featured
+              ? 'border-amber-400/40 bg-amber-400/[0.04]'
+              : 'border-white/10 bg-white/[0.03]',
+          ]}
+        >
+          <span class="text-3xl" aria-hidden="true">{pkg.icon}</span>
+          <h3 class="mt-4 text-xl font-semibold text-white">{pkg.name}</h3>
+          <p class="mt-1 text-sm font-medium text-amber-300/70">{pkg.tagline}</p>
+          <p class="mt-4 flex-1 text-sm leading-relaxed text-white/70">{pkg.body}</p>
+          <div class:list={[
+            'mt-6 rounded-xl p-3',
+            pkg.featured ? 'bg-amber-400/[0.07]' : 'bg-white/[0.04]',
+          ]}>
+            <p class="text-xs font-semibold uppercase tracking-wider text-white/40">Ideal for</p>
+            <p class="mt-1 text-sm leading-relaxed text-white/60">{pkg.idealFor}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- What to expect -->
+  <div class="mx-auto max-w-3xl px-4 pb-14">
+    <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+      <h2 class="text-xl font-semibold text-white">What you can expect from every package</h2>
+      <ul class="mt-5 space-y-3">
+        {expectItems.map((item) => (
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 flex-shrink-0 text-amber-300" aria-hidden="true">✓</span>
+            <span class="text-sm leading-relaxed text-white/70">{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <!-- Service area -->
+  <div class="mx-auto max-w-3xl px-4 pb-14">
+    <h2 class="text-2xl font-semibold text-white">Wedding magic across Vancouver, Surrey & beyond</h2>
+    <p class="mt-4 leading-relaxed text-white/70">
+      Based in <strong class="text-white">Surrey, BC</strong>, I serve Greater Vancouver and surrounding areas. Planning a wedding in the Fraser Valley or beyond? Include your venue in the inquiry and I will confirm logistics.
     </p>
-    <h2 class="mt-12 text-2xl font-semibold text-white">Wedding magic across Vancouver, Surrey, and beyond</h2>
-    <p class="mt-4 leading-relaxed text-white/75">
-      Based in <strong class="text-white">Surrey, BC</strong>, I serve <strong class="text-white">Greater Vancouver</strong> including Vancouver
-      proper, Burnaby, Richmond, North & West Vancouver, New Westminster, Tri-Cities, Langley, and White Rock. Planning a destination-style weekend in
-      the Fraser Valley? Include your venue in the inquiry and I will confirm logistics.
-    </p>
-    <h2 class="mt-12 text-2xl font-semibold text-white">What you can expect</h2>
-    <ul class="mt-4 list-disc space-y-2 pl-5 text-white/75">
-      <li>Magic with cards, coins, and borrowed objects, intimate and elegant.</li>
-      <li>Dress code matched to your celebration (black-tie adjacent when needed).</li>
-      <li>Timing aligned with your planner: cocktails, patio mingling, or a reception “golden hour.”</li>
-    </ul>
-    <p class="mt-10 leading-relaxed text-white/75">
-      Let&apos;s make your celebration truly magical!{' '}
-      <a href="/#book" class="font-semibold text-amber-300 underline-offset-4 hover:underline">Check Availability</a>
-      {' '}for your wedding in Vancouver or Surrey, and I will reply with availability and next steps.
-    </p>
-  </article>
+    <div class="mt-5 flex flex-wrap gap-2">
+      {areas.map((city) => (
+        <span class="rounded-full border border-white/15 bg-white/[0.04] px-3 py-1 text-sm text-white/60">
+          {city}
+        </span>
+      ))}
+    </div>
+  </div>
+
+  <!-- Testimonials -->
+  <div class="mx-auto max-w-3xl px-4 pb-14">
+    <h2 class="text-2xl font-semibold text-white">What guests say</h2>
+    <div class="mt-6 grid gap-4 sm:grid-cols-2">
+      <blockquote class="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+        <p class="text-2xl leading-none text-amber-300/30 font-serif" aria-hidden="true">"</p>
+        <p class="mt-2 text-sm leading-relaxed text-white/75 italic">
+          It really added an extra level of flair and class to the event.
+        </p>
+        <footer class="mt-4 text-xs text-white/40">— Guest at a recent event</footer>
+      </blockquote>
+      <blockquote class="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+        <p class="text-2xl leading-none text-amber-300/30 font-serif" aria-hidden="true">"</p>
+        <p class="mt-2 text-sm leading-relaxed text-white/75 italic">
+          He's such a classy magician, no crude or strange jokes, just quality magic and fun!
+        </p>
+        <footer class="mt-4 text-xs text-white/40">— Guest at a recent event</footer>
+      </blockquote>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="mx-auto max-w-3xl px-4 pb-20">
+    <div class="rounded-2xl border border-amber-400/20 bg-amber-400/[0.04] p-8 text-center">
+      <h2 class="text-2xl font-semibold text-white">Ready to make it magical?</h2>
+      <p class="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-white/70">
+        Every wedding is different, and every package can be tailored to your timeline and vision. Reach out with your date, venue, and a sense of what you are looking for, and I will come back to you with availability and a recommendation for which package fits best.
+      </p>
+      <a
+        href="#book"
+        class="mt-6 inline-flex items-center gap-2 rounded-full bg-amber-400 px-8 py-3 text-sm font-semibold text-zinc-950 transition hover:bg-amber-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-300"
+      >
+        Check Availability
+      </a>
+    </div>
+  </div>
+
   <BookingForm theme="default" />
 </BaseLayout>

@@ -22,6 +22,91 @@ const serviceJson = {
   areaServed: siteConfig.areaServed.map((name) => ({ '@type': 'City', name })),
   serviceType: 'Corporate entertainment',
 };
+
+const packages = [
+  {
+    icon: '🥂',
+    name: 'Strolling Magic',
+    tagline: 'The room-working experience',
+    body: 'During cocktail hour, a reception, or a sponsor lounge, I move through the room group by group, creating intimate moments of astonishment right in front of your guests. This is not a performance people watch from across the room — the magic happens inches away, sometimes right in the hands of the person standing there. Guests who do not know each other yet suddenly have a shared moment to react to, laugh about, and talk about. Conversations start. The room opens up.',
+    idealFor: 'Cocktail receptions, gala pre-programs, conference social hours, client appreciation events, and holiday parties.',
+  },
+  {
+    icon: '🎭',
+    name: 'Stage Show',
+    tagline: 'A headline moment for the whole room',
+    body: 'A 30 to 45-minute performance designed to hold a full room. The material is sharp, contemporary, and built for mixed professional crowds. Expect moments of genuine astonishment, crowd participation that never puts anyone on the spot, and a pace that keeps energy high from start to finish.',
+    idealFor: 'Gala dinners, year-end celebrations, award ceremonies, client appreciation nights, and any event that calls for a defined entertainment anchor.',
+  },
+  {
+    icon: '✨',
+    name: 'Show + Strolling',
+    tagline: 'The complete corporate entertainment experience',
+    body: 'This package combines the stage show with a strolling close-up set, giving your guests two distinct layers of entertainment in one evening. The stage show creates a communal highlight. The strolling magic delivers personal, up-close moments each group of guests experiences as their own. Together, they cover the full arc of a corporate evening.',
+    idealFor: 'Galas, award nights, conference social programs, and large client or team events where you want entertainment to carry the whole evening.',
+  },
+  {
+    icon: '🎪',
+    name: 'Trade Show Booth Magic',
+    tagline: 'Stop traffic. Start conversations.',
+    body: 'Trade shows are a competition for attention. Working at or near your booth, I perform short, repeating sets that draw passersby in and give them a reason to stop. The magic creates a crowd, the crowd creates curiosity, and your team gets warm, engaged prospects standing right in front of them rather than walking past. The experience is tailored to your booth\'s footprint and traffic flow.',
+    idealFor: 'Trade shows, consumer expos, product launches, brand activation events, and any environment where foot traffic and dwell time matter.',
+  },
+];
+
+const keynoteThemes = [
+  {
+    title: 'Disrupting yourself before someone else does',
+    body: 'How the most resilient organizations lean into uncertainty rather than defend against it.',
+  },
+  {
+    title: 'What you are not seeing',
+    body: 'How attention and assumption shape every decision a leader makes — and what magic reveals about both.',
+  },
+  {
+    title: 'AI is not the change. You are.',
+    body: 'A practical and human look at what it actually means to lead in the age of intelligent tools.',
+  },
+];
+
+const expectItems = [
+  'Clean, polished material appropriate for mixed professional audiences.',
+  'A pre-event conversation to align on tone, timing, and brand considerations.',
+  'Self-contained performance style with low footprint (no stage required for close-up).',
+  'Attire matched to your event\'s dress code.',
+  'Coordination with your event planner or venue contact.',
+];
+
+const commonBookings = [
+  'Holiday parties & year-end celebrations',
+  'Client appreciation & VIP receptions',
+  'Conference keynotes & leadership retreats',
+  'Conference cocktail blocks & sponsor lounges',
+  'Gala dinners & awards ceremonies',
+  'Trade shows & brand activation events',
+  'Fundraising galas',
+  'Product & innovation summits',
+];
+
+const areas = [
+  'Vancouver', 'Burnaby', 'Richmond', 'North Vancouver',
+  'West Vancouver', 'New Westminster', 'Tri-Cities', 'Langley', 'White Rock', 'Surrey',
+];
+
+const testimonials = [
+  {
+    quote: "Geo's whole process of booking and his attention to detail was wonderful. The guests were shocked and amazed.",
+    attribution: 'Darian Kovacs, Fundraising Gala Organizer',
+  },
+  {
+    quote: 'It really added an extra level of flair and class to the event.',
+    attribution: 'Guest at a recent event',
+  },
+  {
+    quote: "He's such a classy magician, no crude or strange jokes, just quality magic and fun!",
+    attribution: 'Guest at a recent event',
+  },
+];
 ---
 
 <BaseLayout
@@ -32,6 +117,8 @@ const serviceJson = {
   breadcrumbs={breadcrumbs}
 >
   <script type="application/ld+json" set:html={JSON.stringify(serviceJson)} />
+
+  <!-- Hero -->
   <div class="relative">
     <div class="aspect-[16/7] w-full overflow-hidden md:aspect-[16/6]">
       <Picture
@@ -48,47 +135,191 @@ const serviceJson = {
       <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent"></div>
     </div>
   </div>
-  <article class="mx-auto max-w-3xl px-4 py-16 md:py-20">
+
+  <!-- Intro -->
+  <div class="mx-auto max-w-3xl px-4 pt-16 md:pt-20">
     <p class="text-xs font-semibold uppercase tracking-[0.25em] text-amber-300/90">Corporate & brand events</p>
-    <h1 class="mt-3 text-4xl font-semibold tracking-tight text-white md:text-5xl">Corporate magician for Vancouver & Surrey events</h1>
+    <h1 class="mt-3 text-4xl font-semibold tracking-tight text-white md:text-5xl">
+      Corporate magician for Vancouver & Surrey events
+    </h1>
     <p class="mt-6 text-lg leading-relaxed text-white/75">
-      Elevate your corporate event with magic that sparks conversation and connection. Whether it is a team-building workshop or an awards ceremony,
-      I tailor my performance to fit your event and brand. From intimate close-up magic to high-energy routines, I create a memorable experience that
-      leaves a lasting impact across Vancouver, Surrey, and the Lower Mainland.
+      Elevate your corporate event with entertainment that does more than fill time. Whether you need a polished icebreaker during cocktails, a headline stage show, a high-energy trade show presence, or a keynote that changes the way your leaders think about the world around them — there is a package built for it. Clean, contemporary, and designed for professional rooms across Vancouver, Surrey, and the Lower Mainland.
     </p>
-    <h2 class="mt-12 text-2xl font-semibold text-white">Built for professional rooms</h2>
+  </div>
+
+  <!-- Built for professional rooms -->
+  <div class="mx-auto max-w-3xl px-4 py-14">
+    <h2 class="text-2xl font-semibold text-white">Built for professional rooms</h2>
     <p class="mt-4 leading-relaxed text-white/75">
-      Material is clean, contemporary, and audience-aware, designed for mixed groups, executives, and guests who may not know each other yet. The
-      goal is simple: make your brand moment feel effortless and elevated.
+      Material is audience-aware and always on-brand. The goal is simple: make your event feel effortless, elevated, and worth talking about — without ever overshadowing the purpose of the evening.
     </p>
-    <h2 class="mt-12 text-2xl font-semibold text-white">Corporate events across the Lower Mainland</h2>
-    <p class="mt-4 leading-relaxed text-white/75">
-      From downtown Vancouver hotels to Surrey convention-adjacent venues, Burnaby studios, Richmond conference centres, and North Shore retreats, I
-      travel throughout <strong class="text-white">Greater Vancouver</strong> with a self-contained, low-footprint performance style (no stage
-      required for close-up).
+  </div>
+
+  <!-- Packages grid (4 cards, 2-col on md+) -->
+  <div class="mx-auto max-w-5xl px-4 pb-6">
+    <h2 class="text-2xl font-semibold text-white md:text-3xl">Corporate packages</h2>
+    <div class="mt-8 grid gap-5 md:grid-cols-2">
+      {packages.map((pkg) => (
+        <div class="flex flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+          <span class="text-3xl" aria-hidden="true">{pkg.icon}</span>
+          <h3 class="mt-4 text-xl font-semibold text-white">{pkg.name}</h3>
+          <p class="mt-1 text-sm font-medium text-amber-300/70">{pkg.tagline}</p>
+          <p class="mt-4 flex-1 text-sm leading-relaxed text-white/70">{pkg.body}</p>
+          <div class="mt-6 rounded-xl bg-white/[0.04] p-3">
+            <p class="text-xs font-semibold uppercase tracking-wider text-white/40">Ideal for</p>
+            <p class="mt-1 text-sm leading-relaxed text-white/60">{pkg.idealFor}</p>
+          </div>
+        </div>
+      ))}
+
+      <!-- Keynote: full-width featured card -->
+      <div class="flex flex-col rounded-2xl border border-amber-400/40 bg-amber-400/[0.04] p-6 md:col-span-2">
+        <div class="flex flex-wrap items-start justify-between gap-4">
+          <div>
+            <span class="text-3xl" aria-hidden="true">🎤</span>
+            <h3 class="mt-4 text-xl font-semibold text-white">The Magical Keynote</h3>
+            <p class="mt-1 text-sm font-medium text-amber-300/70">A talk that sticks</p>
+          </div>
+        </div>
+        <p class="mt-4 text-sm leading-relaxed text-white/70 md:max-w-2xl">
+          This is not a magic show with a business lesson bolted on. It is a genuine leadership keynote that uses magic as a lens to examine the way we perceive change — and what it takes to move confidently through a world that keeps shifting beneath us. The ideas do not just land intellectually. They land experientially. Moments of wonder woven through the talk show, in real time, how much our assumptions shape what we see — and how much we miss when we stop questioning them.
+        </p>
+        <div class="mt-6 grid gap-3 sm:grid-cols-3">
+          {keynoteThemes.map((theme) => (
+            <div class="rounded-xl bg-amber-400/[0.07] p-4">
+              <p class="text-sm font-semibold text-white">{theme.title}</p>
+              <p class="mt-1 text-xs leading-relaxed text-white/60">{theme.body}</p>
+            </div>
+          ))}
+        </div>
+        <div class="mt-6 rounded-xl bg-amber-400/[0.07] p-3">
+          <p class="text-xs font-semibold uppercase tracking-wider text-white/40">Ideal for</p>
+          <p class="mt-1 text-sm leading-relaxed text-white/60">
+            Leadership conferences, executive retreats, all-hands events, product and innovation summits, and any gathering where you want your audience to leave thinking differently.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Meet the keynote speaker -->
+  <div class="mx-auto max-w-5xl px-4 py-10">
+    <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-amber-300/70">Meet the keynote speaker</p>
+      <h2 class="mt-3 text-2xl font-semibold text-white">Performer. Executive. Keynote speaker.</h2>
+      <div class="mt-5 space-y-4 text-sm leading-relaxed text-white/70">
+        <p>
+          Geo is not just a magician who dabbles in business. He is a working technology executive who has spent nearly a decade at the forefront of how AI is actually being used in organizations today.
+        </p>
+        <p>
+          As VP of Product at <a href="https://zapier.com" class="font-medium text-amber-300 underline-offset-4 hover:underline" target="_blank" rel="noopener">Zapier</a> — where he joined as the company's first-ever Product Manager — Geo has helped scale one of the world's most widely used automation platforms from millions in revenue to hundreds of millions, serving over 3.4 million businesses and 69% of the Fortune 1000. He regularly speaks at conferences and keynotes on leadership, AI transformation, and the future of work.
+        </p>
+        <p>
+          He has been featured on multiple industry podcasts including{' '}
+          <a href="https://productschool.com/resources/product-podcast/chris-geoghegan-zapier-orchestrating-ai-agents" class="font-medium text-amber-300 underline-offset-4 hover:underline" target="_blank" rel="noopener">The Product Podcast</a>,{' '}
+          <a href="https://www.itshipped.fm/episodes/34" class="font-medium text-amber-300 underline-offset-4 hover:underline" target="_blank" rel="noopener">It Shipped That Way</a>, and{' '}
+          <a href="https://www.peopleofproduct.us/p/170-preparing-your-ai-workbench-ft" class="font-medium text-amber-300 underline-offset-4 hover:underline" target="_blank" rel="noopener">People of Product</a>, and keynoted GitKon 2025 on context engineering and AI collaboration.
+        </p>
+        <p>
+          The keynote brings both worlds together: the experience of a leader who has lived through real organizational transformation, and the perspective of a performer who understands how human attention, perception, and belief shape every decision we make.
+        </p>
+      </div>
+      <a
+        href="https://www.linkedin.com/in/chrisgeoghegan/"
+        target="_blank"
+        rel="noopener"
+        class="mt-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.05] px-4 py-2 text-sm font-medium text-white/80 transition hover:border-white/30 hover:text-white"
+      >
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+        Connect on LinkedIn
+      </a>
+    </div>
+  </div>
+
+  <!-- What you can expect -->
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+      <h2 class="text-xl font-semibold text-white">What you can expect from every package</h2>
+      <ul class="mt-5 space-y-3">
+        {expectItems.map((item) => (
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 flex-shrink-0 text-amber-300" aria-hidden="true">✓</span>
+            <span class="text-sm leading-relaxed text-white/70">{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <!-- Common corporate bookings -->
+  <div class="mx-auto max-w-5xl px-4 py-10">
+    <h2 class="text-2xl font-semibold text-white">Common corporate bookings</h2>
+    <div class="mt-5 flex flex-wrap gap-2">
+      {commonBookings.map((booking) => (
+        <span class="rounded-full border border-white/15 bg-white/[0.04] px-3 py-1.5 text-sm text-white/60">
+          {booking}
+        </span>
+      ))}
+    </div>
+  </div>
+
+  <!-- Fundraising galas -->
+  <div class="mx-auto max-w-5xl px-4 pb-10">
+    <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-amber-300/70">Special mention</p>
+      <h2 class="mt-2 text-xl font-semibold text-white">Fundraising galas</h2>
+      <p class="mt-3 text-sm leading-relaxed text-white/70">
+        Magic and fundraising are a natural fit. An engaged room is a generous room. Whether during cocktails, a pre-program window, or woven into the live auction energy, I create moments that keep guests connected to the night and excited to give. Share your program and fundraising goals in the inquiry and we will map the right performance windows together.
+      </p>
+    </div>
+  </div>
+
+  <!-- Service area -->
+  <div class="mx-auto max-w-5xl px-4 pb-10">
+    <h2 class="text-2xl font-semibold text-white">Corporate events across the Lower Mainland</h2>
+    <p class="mt-4 leading-relaxed text-white/70">
+      Based in <strong class="text-white">Surrey, BC</strong>, I travel throughout Greater Vancouver — from downtown Vancouver hotel ballrooms to Burnaby studios, Richmond conference centres, and North Shore retreats. If that is where your event is, that is where I will be.
     </p>
-    <h2 class="mt-12 text-2xl font-semibold text-white">Fundraising galas</h2>
-    <p class="mt-4 leading-relaxed text-white/75">
-      Transform your fundraising gala into a magical experience that encourages generosity. Through mind-blowing magic and interactive moments, I
-      engage guests while highlighting your cause. Whether during cocktails, dinner, or the live auction, I integrate magic that keeps your guests
-      connected and excited to give.
-    </p>
-    <p class="mt-4 leading-relaxed text-white/75">
-      Let&apos;s craft an experience that exceeds your goals. Share your program, audience, and fundraising moments in the inquiry, and we will map
-      the right performance windows.
-    </p>
-    <h2 class="mt-12 text-2xl font-semibold text-white">Common corporate bookings</h2>
-    <ul class="mt-4 list-disc space-y-2 pl-5 text-white/75">
-      <li>Holiday parties & year-end celebrations</li>
-      <li>Client appreciation & VIP receptions</li>
-      <li>Conference cocktail blocks & sponsor lounges</li>
-      <li>Gala dinners (cocktail and pre-program mingling)</li>
-    </ul>
-    <p class="mt-10 leading-relaxed text-white/75">
-      Let&apos;s make your next corporate event stand out!{' '}
-      <a href="/#book" class="font-semibold text-amber-300 underline-offset-4 hover:underline">Check Availability</a>
-      {' '}and include your run-of-show, guest count, and dress code.
-    </p>
-  </article>
+    <div class="mt-5 flex flex-wrap gap-2">
+      {areas.map((city) => (
+        <span class="rounded-full border border-white/15 bg-white/[0.04] px-3 py-1 text-sm text-white/60">
+          {city}
+        </span>
+      ))}
+    </div>
+  </div>
+
+  <!-- Testimonials -->
+  <div class="mx-auto max-w-5xl px-4 pb-10">
+    <h2 class="text-2xl font-semibold text-white">What clients say</h2>
+    <div class="mt-6 grid gap-4 sm:grid-cols-3">
+      {testimonials.map((t) => (
+        <blockquote class="flex flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+          <p class="text-2xl leading-none text-amber-300/30 font-serif" aria-hidden="true">"</p>
+          <p class="mt-2 flex-1 text-sm leading-relaxed text-white/75 italic">{t.quote}</p>
+          <footer class="mt-4 text-xs text-white/40">— {t.attribution}</footer>
+        </blockquote>
+      ))}
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="mx-auto max-w-5xl px-4 pb-20">
+    <div class="rounded-2xl border border-amber-400/20 bg-amber-400/[0.04] p-8 text-center">
+      <h2 class="text-2xl font-semibold text-white">Ready to talk about your event?</h2>
+      <p class="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-white/70">
+        Every corporate event is different. Share your run-of-show, guest count, venue, and what you are trying to accomplish, and I will come back with a recommendation for which package fits best.
+      </p>
+      <a
+        href="#book"
+        class="mt-6 inline-flex items-center gap-2 rounded-full bg-amber-400 px-8 py-3 text-sm font-semibold text-zinc-950 transition hover:bg-amber-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-300"
+      >
+        Check Availability
+      </a>
+    </div>
+  </div>
+
   <BookingForm theme="default" />
 </BaseLayout>
