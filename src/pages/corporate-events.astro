@@ -21,6 +21,7 @@ const serviceJson = {
   provider: { '@id': `${siteConfig.siteUrl}/#business` },
   areaServed: siteConfig.areaServed.map((name) => ({ '@type': 'City', name })),
   serviceType: 'Corporate entertainment',
+  dateModified: new Date().toISOString(),
 };
 
 const packages = [

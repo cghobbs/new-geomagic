@@ -21,6 +21,7 @@ const serviceJson = {
   provider: { '@id': `${siteConfig.siteUrl}/#business` },
   areaServed: siteConfig.areaServed.map((name) => ({ '@type': 'City', name })),
   serviceType: 'Wedding entertainment',
+  dateModified: new Date().toISOString(),
 };
 
 const packages = [
@@ -104,6 +105,13 @@ const areas = [
       </p>
       <p>
         I move through your event with a warm, conversational style, never competing with speeches or pulling focus from you and your partner. The magic happens right in front of your guests — sometimes right in their hands — which makes it feel personal in a way that no stage show alone ever could.
+      </p>
+      <p>
+        Close-up magic has been performed at celebrations for centuries. Organizations like the{' '}
+        <a href="https://www.ibmagi.com/" target="_blank" rel="noopener" class="font-medium text-amber-300 underline-offset-4 hover:underline">International Brotherhood of Magicians</a>{' '}
+        — the world's oldest and largest magic organization — uphold the professional standards that make live close-up magic a trusted choice for milestone events. Vancouver's own{' '}
+        <a href="https://www.hiddenwonders.ca/" target="_blank" rel="noopener" class="font-medium text-amber-300 underline-offset-4 hover:underline">Hidden Wonders</a>{' '}
+        has helped put the city on the map as a destination for world-class close-up performance.
       </p>
     </div>
   </div>

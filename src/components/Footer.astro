@@ -38,6 +38,13 @@ const gold = theme === 'velvet' ? 'text-[var(--color-velvet-gold)]' : '';
           <li><a class="underline-offset-4 hover:underline" href="/private-parties/">Private parties</a></li>
           <li><a class="underline-offset-4 hover:underline" href="/about/">About</a></li>
           <li><a class="underline-offset-4 hover:underline" href="/faq/">FAQ</a></li>
+          {siteConfig.social.instagram && (
+            <li>
+              <a class="underline-offset-4 hover:underline" href={siteConfig.social.instagram} target="_blank" rel="noopener">
+                Instagram
+              </a>
+            </li>
+          )}
         </ul>
       </div>
       <div>
