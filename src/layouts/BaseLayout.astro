@@ -28,6 +28,8 @@ interface Props {
   robots?: string;
   /** Skip default chrome (e.g. minimal thank-you page) */
   minimal?: boolean;
+  /** ISO date string for dateModified signal (defaults to build date) */
+  dateModified?: string;
 }
 
 const {
@@ -40,6 +42,7 @@ const {
   faqItems,
   robots = 'index,follow',
   minimal = false,
+  dateModified = new Date().toISOString(),
 } = Astro.props;
 
 const canonicalURL = new URL(pathname, siteConfig.siteUrl).href;
@@ -127,6 +130,7 @@ const websiteJson = {
   description: siteConfig.defaultDescription,
   inLanguage: 'en-CA',
   publisher: { '@id': businessId },
+  dateModified,
 };
 
 const sameAsLinks = [siteConfig.social.instagram, siteConfig.social.youtube].filter(Boolean);
@@ -216,6 +220,7 @@ const faqJson =
     <meta property="og:image:alt" content={`${siteConfig.businessName} performing close-up magic`} />
     <meta property="og:site_name" content={siteConfig.businessName} />
     <meta property="og:locale" content="en_CA" />
+    <meta property="article:modified_time" content={dateModified} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
